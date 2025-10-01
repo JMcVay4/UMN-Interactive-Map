@@ -4,3 +4,5 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 L.geoJSON(test).addTo(map);
+
+//test
