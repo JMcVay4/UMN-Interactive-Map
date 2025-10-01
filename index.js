@@ -5,3 +5,4 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // when adding a new set of objects, copy the following line and change test to your variable
 L.geoJSON(test).addTo(map);
+L.geoJSON(coffee).addTo(map);
