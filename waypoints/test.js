@@ -1,3 +1,7 @@
+// You will want to get these coordinates from geojson.io
+// Make sure to add
+// var [name of your points] = 
+// before you paste from geojson.io
 var test = {
   "type": "FeatureCollection",
   "features": [
