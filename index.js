@@ -3,6 +3,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+function onEachFeature(feature, layer) {
+    if (feature.properties && feature.properties.name && feature.properties.floor && feature.properties.hall) {
+        layer.bindPopup(feature.properties.name.concat("<br>Building: ", feature.properties.hall.concat("<br>Floor: ", feature.properties.floor)));
+    }
+}
+
 // when adding a new set of objects, copy the following line and change test to your variable
 L.geoJSON(test).addTo(map);
-L.geoJSON(coffee).addTo(map);
+L.geoJSON(coffee, {
+    onEachFeature: onEachFeature
+}).addTo(map);
