@@ -14,3 +14,6 @@ L.geoJSON(test).addTo(map);
 L.geoJSON(coffee, {
     onEachFeature: onEachFeature
 }).addTo(map);
+L.geoJSON(vending, {
+    onEachFeature: onEachFeature
+}).addTo(map);
