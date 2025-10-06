@@ -6,7 +6,7 @@ var microwaves1 = {
       "properties": {
         "name": "Microwave",
         "hall": "The Cube",
-        "note": "Near Starbucks"
+        "note": "Near Starbucks",
         "floor": "Ground floor"
       },
       "geometry": {
@@ -23,7 +23,7 @@ var microwaves1 = {
       "properties": {
         "name": "Microwave",
         "hall": "Coffman Memorial Union",
-        "floor": "Ground level"
+        "floor": "Ground level",
         "note": "Near the marketplace front doors"
       },
       "geometry": {

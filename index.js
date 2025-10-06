@@ -22,3 +22,4 @@ L.geoJSON(study, {
 }).addTo(map);
 L.geoJSON(microwaves1, {
     onEachFeature: onEachFeature
+})
