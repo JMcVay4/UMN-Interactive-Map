@@ -3,9 +3,25 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+var layerGroups = {};
+
 function onEachFeature(feature, layer) {
-    if (feature.properties && feature.properties.name && feature.properties.floor && feature.properties.hall) {
-        layer.bindPopup(feature.properties.name.concat("<br>Building: ", feature.properties.hall.concat("<br>Floor: ", feature.properties.floor)));
+    if (feature.properties && feature.properties.name) {
+        var popupContent = feature.properties.name;
+        
+        if (feature.properties.hall) {
+            popupContent += "<br>Building: " + feature.properties.hall;
+        }
+        
+        if (feature.properties.floor) {
+            popupContent += "<br>Floor: " + feature.properties.floor;
+        }
+        
+        if (feature.properties.note) {
+            popupContent += "<br>Note: " + feature.properties.note;
+        }
+        
+        layer.bindPopup(popupContent);
     }
 }
 
