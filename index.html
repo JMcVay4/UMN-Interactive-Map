@@ -12,11 +12,12 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
      <link rel="stylesheet" href="style.css">
-     <style>#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }</style>
+     <style>#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 0; }</style>
      
 </head>
 <body>
      <div id="map"></div>
+     <div id="sidebar"></div>
     <!-- When adding a new set of points, copy the following line and replace test with the name of the file -->
     <script src="waypoints/test.js"></script>
     <script src="waypoints/coffee.js"></script>
@@ -25,6 +26,7 @@
     <script src="waypoints/microwaves1.js"></script>
 
     <!-- MAKE SURE THAT WAYPOINTS ARE BEFORE THIS LINE -->
+     <script src="sidebar.js"></script>
     <script src="index.js"></script>
     
     
