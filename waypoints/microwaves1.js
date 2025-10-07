@@ -44,7 +44,11 @@ var microwaves1 = {
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {"name": "Microwave",
+        "hall": "Elliot Hall",
+        "floor": "Ground level",
+        "note": "Near the marketplace front doors"
+      },
       "geometry": {
         "coordinates": [
           -93.23785277352764,
