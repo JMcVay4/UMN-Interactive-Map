@@ -35,14 +35,7 @@ var microwaves1 = {
       },
       "id": 1
     },
-   
-  ]
-}
-
-{
-  "type": "FeatureCollection",
-  "features": [
-    {
+   {
       "type": "Feature",
       "properties": {"name": "Microwave",
         "hall": "Elliot Hall",
@@ -56,7 +49,7 @@ var microwaves1 = {
         ],
         "type": "Point"
       }
-    }
+    },
         {
       "type": "Feature",
       "properties": {
@@ -82,7 +75,7 @@ var microwaves1 = {
       "properties": {
          "name": "Microwave",
           "hall": "Coffman Memorial Union",
-          "floor": "Floor 2" 
+          "floor": "Floor 2",
           "note": "Room 204, Commuter Connection"
       },
       "geometry": {
