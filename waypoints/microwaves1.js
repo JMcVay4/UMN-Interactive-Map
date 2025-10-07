@@ -38,3 +38,20 @@ var microwaves1 = {
    
   ]
 }
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -93.23785277352764,
+          44.976916356518586
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}
