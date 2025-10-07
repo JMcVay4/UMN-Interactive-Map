@@ -16,6 +16,48 @@
      
 </head>
 <body>
+
+    <!-- Menu Button -->
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="side-bar">
+        <header>   
+            <!-- Close Button -->
+            <div class="close-btn">
+                <i class="fas fa-angle-left"></i>
+            </div>
+            
+            <img src="goldy.png" alt="">
+            <h1>UMN Interactive Map</h1>
+        </header>
+        
+        <!-- Location Categories Panel -->
+        <div class="location-panel">
+            <h3>Location Categories</h3>
+            <div class="toggle-buttons">
+                <button class="toggle-btn active" data-category="coffee">
+                    <i class="fas fa-coffee"></i>
+                    Coffee Shops
+                </button>
+                <button class="toggle-btn active" data-category="study">
+                    <i class="fas fa-book"></i>
+                    Study Spaces
+                </button>
+                <button class="toggle-btn active" data-category="vending">
+                    <i class="fas fa-shopping-cart"></i>
+                    Vending Machines
+                </button>
+                <button class="toggle-btn active" data-category="microwaves">
+                    <i class="fas fa-microphone"></i>
+                    Microwaves
+                </button>
+            </div>
+        </div>
+    </div>
+    
      <div id="map"></div>
     <!-- When adding a new set of points, copy the following line and replace test with the name of the file -->
     <script src="waypoints/test.js"></script>
