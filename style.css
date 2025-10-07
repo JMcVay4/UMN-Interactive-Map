@@ -25,6 +25,7 @@
     overflow-y: auto;
     transition: 0.6s ease;
     transition-property: left;
+    z-index: 999;
     
 }
 
@@ -62,8 +63,81 @@ header h1 {
     font-size: 23px;
     margin: 25px;
     cursor: pointer;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .side-bar.active{
     left: 0px;
+}
+
+.location-panel {
+    padding: 20px;
+    background: #33363a;
+    margin-top: 10px;
+}
+
+.location-panel h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.toggle-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toggle-btn {
+    background: #800000;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.toggle-btn:hover {
+    background: #a00000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.toggle-btn.active {
+    background: #4CAF50;
+    border-color: #45a049;
+}
+
+.toggle-btn.active:hover {
+    background: #45a049;
+}
+
+.toggle-btn i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .side-bar {
+        width: 280px;
+        left: -280px;
+    }
+    
+    .toggle-btn {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
 }
