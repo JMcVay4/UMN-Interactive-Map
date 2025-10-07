@@ -33,7 +33,7 @@ function onEachFeature(feature, layer) {
 }
 
 // when adding a new set of objects, copy the following line and change test to your variable
-L.geoJSON(test).addTo(map);
+
 layerGroups.coffee = L.geoJSON(coffee, {
     onEachFeature: onEachFeature
 }).addTo(map);
