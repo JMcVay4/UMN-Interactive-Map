@@ -48,9 +48,8 @@ var microwaves1 = {
           44.976916356518586
         ],
         "type": "Point"
-      }
-    },
-        {
+         },
+    {
       "type": "Feature",
       "properties": {
           "name": "Microwave",
@@ -64,13 +63,9 @@ var microwaves1 = {
           44.97273640176127
         ],
         "type": "Point"
-      }
-    }
-  ]
-}
-    {
-      [
-    {
+     }
+    },
+        {
       "type": "Feature",
       "properties": {
          "name": "Microwave",
@@ -84,7 +79,20 @@ var microwaves1 = {
           44.97287475204024
         ],
         "type": "Point"
+        {
+  "type": "FeatureCollection",
+  "features": [
+    
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -93.23725122011894,
+          44.9750032383794
+        ],
+        "type": "Point"
       }
     }
   ]
 }
+     
