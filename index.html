@@ -1,90 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMN-TC Interactive Map</title>
-    <!--<link rel="stylesheet" href="style.css">-->
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }</style>
-     
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>UMN-TC Interactive Map</title>
+   <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="style.css">
+   <style>#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }</style>
+   
 </head>
 <body>
 
-    <!-- Menu Button -->
-    <div class="menu-btn">
-        <i class="fas fa-bars"></i>
-    </div>
-    
-    <!-- Sidebar -->
-    <div class="side-bar">
-        <header>   
-            <!-- Close Button -->
-            <div class="close-btn">
-                <i class="fas fa-angle-left"></i>
-            </div>
-            
-           <h1>
 
-               
-                
-            </h1>
-            <h1 style ="text-align: center;">UMN Interactive Map</h1>
-            <img src="goldy.png" alt="">
-            
-        </header>
-        
-        <!-- Location Categories Panel -->
-        <div class="location-panel">
-            <h3>Location Categories</h3>
-            <div class="toggle-buttons">
-                <button class="toggle-btn active" data-category="coffee">
-                    <i class="fas fa-coffee"></i>
-                    Coffee Shops
-                </button>
-                <button class="toggle-btn active" data-category="study">
-                    <i class="fas fa-book"></i>
-                    Study Spaces
-                </button>
-                <button class="toggle-btn active" data-category="vending">
-                    <i class="fas fa-shopping-cart"></i>
-                    Vending Machines
-                </button>
-                <button class="toggle-btn active" data-category="microwaves">
-                    <i class="fas fa-utensils"></i>
-                    Microwaves
-                </button>
-            </div>
-        </div>
-    </div>
-    
-     <div id="map"></div>
-     <div id="sidebar"></div>
-    <!-- When adding a new set of points, copy the following line and replace test with the name of the file -->
-     
-    <script src="waypoints/coffee.js"></script>
-    <script src="waypoints/vending.js"></script>
-    <script src="waypoints/study.js"></script>
-    <script src="waypoints/microwaves1.js"></script>
+   <!-- Menu Button -->
+   <div class="menu-btn">
+       <i class="fas fa-bars"></i>
+   </div>
+  
+   <!-- Sidebar -->
+   <div class="side-bar">
+       <header>  
+           <!-- Close Button -->
+           <div class="close-btn">
+               <i class="fas fa-angle-left"></i>
+           </div>
+          
+          <h1>
 
-    <!-- jQuery CDN - Must load before other scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- MAKE SURE THAT WAYPOINTS ARE BEFORE THIS LINE -->
-     <script src="sidebar.js"></script>
-    <script src="index.js"></script>
+             
+              
+           </h1>
+           <h1 style ="text-align: center; color: #800000">UMN Interactive Map</h1>
+           <img src="goldy.png" alt="">
+          
+       </header>
+      
+       <!-- Location Categories Panel -->
+       <div class="location-panel">
+           <h3 style = "text-align: center; color: #800000"> Location Categories</h3>
+           <div class="toggle-buttons">
+               <button class="toggle-btn active" data-category="coffee">
+                   <i class="fas fa-coffee"></i>
+                   Coffee Shops
+               </button>
+               <button class="toggle-btn active" data-category="study">
+                   <i class="fas fa-book"></i>
+                   Study Spaces
+               </button>
+               <button class="toggle-btn active" data-category="vending">
+                   <i class="fas fa-shopping-cart"></i>
+                   Vending Machines
+               </button>
+               <button class="toggle-btn active" data-category="microwaves">
+                   <i class="fas fa-utensils"></i>
+                   Microwaves
+               </button>
+           </div>
+       </div>
+   </div>
+  
+    <div id="map"></div>
+    <div id="sidebar"></div>
+   <!-- When adding a new set of points, copy the following line and replace test with the name of the file -->
+   
+   <script src="waypoints/coffee.js"></script>
+   <script src="waypoints/vending.js"></script>
+   <script src="waypoints/study.js"></script>
+   <script src="waypoints/microwaves1.js"></script>
+
+
+   <!-- jQuery CDN - Must load before other scripts -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- MAKE SURE THAT WAYPOINTS ARE BEFORE THIS LINE -->
     <script src="sidebar.js"></script>
-    
-    
-     
+   <script src="index.js"></script>
+   <script src="sidebar.js"></script>
+  
+  
+   
 </body>
 </html>
-

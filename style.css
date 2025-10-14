@@ -1,143 +1,162 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
+
 
 }
-    body{
-        min-height: 100vh;
-        background: white;
-        color: white;
-        background-size: cover;
-        background-position: center;
-    }
+   body{
+       min-height: 100vh;
+       background: white;
+       color: white;
+       background-size: cover;
+       background-position: center;
+   }
+
+
+
 
 
 
 .side-bar{
-    background: #800000;
-    width: 300px;
-    left: -300px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    overflow-y: auto;
-    transition: 0.6s ease;
-    transition-property: left;
-    z-index: 999;
-    
+   background: #ffffff;
+   width: 300px;
+   left: -300px;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   overflow-y: auto;
+   transition: 0.6s ease;
+   transition-property: left;
+   z-index: 999;
+  
 }
+
 
 .close-btn{
-    position:absolute;
-    color: #fff;
-    font-size:23px;
-    right:0px;
-    margin:15px;
-    cursor:pointer;
+   position:absolute;
+   color: #fff;
+   font-size:23px;
+   right:0px;
+   margin:15px;
+   cursor:pointer;
 }
+
 
 header{
-    background: #33363a;
-    
+   background: #ffffff;
+  
 }
 header img {
-    width: 100px;
-    margin: 15px;
-    margin-left: 70px;
-    border-radius: 50%;
-    border: 3px solid #b4b4b4
+   width: 100px;
+   margin: 15px;
+   margin-left: 70px;
+   border-radius: 50%;
+   border: 3px solid #b4b4b4
 }
+
 
 header h1 {
-    text-align: left;
-    font-weight: 500;
-    font-size: 25px;
-    padding-bottom: 20px;
+   text-align: left;
+   font-weight: 500;
+   font-size: 25px;
+   padding-bottom: 20px;
 }
+
 
 .menu-btn{
-    position: absolute;
-    color:#33363a;
-    font-size: 23px;
-    margin: 25px;
-    cursor: pointer;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   position: absolute;
+   color:#33363a;
+   font-size: 23px;
+   margin: 25px;
+   cursor: pointer;
+   z-index: 1000;
+   background: rgba(255, 255, 255, 0.9);
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 
 .side-bar.active{
-    left: 0px;
+   left: 0px;
 }
+
 
 .location-panel {
-    padding: 20px;
-    background: #33363a;
-    margin-top: 10px;
+   padding: 20px;
+   background: #ffffff;
 }
+
 
 .location-panel h3 {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: 500;
+   color: #fff;
+   margin-bottom: 15px;
+   font-size: 18px;
+   font-weight: 500;
 }
+
 
 .toggle-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
 }
+
 
 .toggle-btn {
-    background: #800000;
-    color: white;
-    border: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+   background: #952828;
+   color: rgb(255, 255, 255);
+   border: none;
+   padding: 12px 15px;
+   border-radius: 8px;
+   cursor: pointer;
+   font-size: 14px;
+   font-weight: 500;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   transition: all 0.3s ease;
+   border: 2px solid transparent;
 }
+
 
 .toggle-btn:hover {
-    background: #a00000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   background: #eea846;
+   transform: translateY(-2px);
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
 
 .toggle-btn.active {
-    background: #4CAF50;
-    border-color: #45a049;
+   background: #952828;
+   border-color: #440303;
 }
+
 
 .toggle-btn.active:hover {
-    background: #45a049;
+   background: #eea846;
 }
+
 
 .toggle-btn i {
-    font-size: 16px;
-    width: 20px;
-    text-align: center;
+   font-size: 16px;
+   width: 20px;
+   text-align: center;
 }
 
+
 @media (max-width: 768px) {
-    .side-bar {
-        width: 280px;
-        left: -280px;
-    }
-    
-    .toggle-btn {
-        padding: 10px 12px;
-        font-size: 13px;
-    }
+   .side-bar {
+       width: 280px;
+       left: -280px;
+   }
+  
+   .toggle-btn {
+       padding: 10px 12px;
+       font-size: 13px;
+   }
 }
+
+
