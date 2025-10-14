@@ -32,6 +32,29 @@ function onEachFeature(feature, layer) {
     }
 }
 
+var markerColors = {
+    coffee: '#8B4513',      
+    study: '#2E8B57',       
+    microwaves: '#FF6347',  
+    vending: '#4169E1'      
+};
+
+function createCustomMarker(feature, latlng, color) {
+    return L.marker(latlng, {
+        icon: L.icon({
+            iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 41" width="25" height="41">
+                    <path fill="${color}" stroke="#fff" stroke-width="1.5" d="M12.5 0C5.6 0 0 5.6 0 12.5c0 12.5 12.5 28.5 12.5 28.5s12.5-16 12.5-28.5C25 5.6 19.4 0 12.5 0z"/>
+                    <circle cx="12.5" cy="12.5" r="4" fill="#fff"/>
+                </svg>
+            `),
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34]
+        })
+    });
+}
+
 // when adding a new set of objects, copy the following line and change test to your variable
 
 layerGroups.coffee = L.geoJSON(coffee, {
