@@ -1,7 +1,7 @@
 var map = L.map('map',{
     zoomControl:false
 }).setView([44.9740, -93.2354], 15.5);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom:18,
     minZoom:13
