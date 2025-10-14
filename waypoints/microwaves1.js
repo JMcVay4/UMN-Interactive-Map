@@ -35,7 +35,7 @@ var microwaves1 = {
       },
       "id": 1
     },
-   {
+    {
       "type": "Feature",
       "properties": {"name": "Microwave",
         "hall": "Elliot Hall",
@@ -49,6 +49,7 @@ var microwaves1 = {
         ],
         "type": "Point"
          },
+        },
     {
       "type": "Feature",
       "properties": {
@@ -77,18 +78,6 @@ var microwaves1 = {
         "coordinates" : [
           -93.23523844430282,
           44.97287475204024
-        ],
-        "type": "Point"
-        {
-  "type": "FeatureCollection",
-  "features": [
-    
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          -93.23725122011894,
-          44.9750032383794
         ],
         "type": "Point"
       }
