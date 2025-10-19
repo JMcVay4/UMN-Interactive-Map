@@ -6,7 +6,7 @@ var vending = {
       "properties": {
         "name": "Vending Machine",
         "hall": "Comstock",
-        "floor": "Basement"
+        "floor": "Basement, 1"
       },
       "geometry": {
         "coordinates": [
@@ -316,6 +316,502 @@ var vending = {
         "type": "Point"
       },
       "id": 19
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Bruinincks",
+        "floor": "1, 3, 5"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2373164897767,
+          44.97393753494663
+        ],
+        "type": "Point"
+      },
+      "id": 20
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Appleby",
+        "floor": "Ground"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23723627891782,
+          44.97489507243401
+        ],
+        "type": "Point"
+      },
+      "id": 21
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Smith",
+        "floor": "1, 2"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2364192364007,
+          44.97450423380923
+        ],
+        "type": "Point"
+      },
+      "id": 22
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Walter Library",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23606831389282,
+          44.975270257508384
+        ],
+        "type": "Point"
+      },
+      "id": 23
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Northrop",
+        "floor": "idk"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23553691695186,
+          44.97644055173524
+        ],
+        "type": "Point"
+      },
+      "id": 24
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Morrill",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23464368244586,
+          44.97588602288178
+        ],
+        "type": "Point"
+      },
+      "id": 25
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Tate",
+        "floor": "B, 1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2344832607281,
+          44.975403718035835
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Murphy",
+        "floor": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23471386694767,
+          44.974517117663424
+        ],
+        "type": "Point"
+      },
+      "id": 27
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Ford",
+        "floor": "B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23443312894102,
+          44.97392131451227
+        ],
+        "type": "Point"
+      },
+      "id": 28
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Scott",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23702995550154,
+          44.97678678724634
+        ],
+        "type": "Point"
+      },
+      "id": 29
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Elliott",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23779195778782,
+          44.97694991591564
+        ],
+        "type": "Point"
+      },
+      "id": 30
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Burton",
+        "floor": "idk"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23756545028945,
+          44.97773459655028
+        ],
+        "type": "Point"
+      },
+      "id": 31
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Shevlin",
+        "floor": "B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23805674180096,
+          44.97825234378186
+        ],
+        "type": "Point"
+      },
+      "id": 32
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Education Science",
+        "floor": 3
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2396509326243,
+          44.97867788595133
+        ],
+        "type": "Point"
+      },
+      "id": 33
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Peik",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23709422198601,
+          44.97893181583214
+        ],
+        "type": "Point"
+      },
+      "id": 34
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Wilkins",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23907944074672,
+          44.980194233427994
+        ],
+        "type": "Point"
+      },
+      "id": 35
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Sanford",
+        "floor": "B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24004798761005,
+          44.98032013113868
+        ],
+        "type": "Point"
+      },
+      "id": 36
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Nicholson",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23562101624971,
+          44.97726655423753
+        ],
+        "type": "Point"
+      },
+      "id": 37
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Folwell",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23444793243661,
+          44.97828077530491
+        ],
+        "type": "Point"
+      },
+      "id": 38
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Williamson",
+        "floor": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23478392340387,
+          44.97770373550949
+        ],
+        "type": "Point"
+      },
+      "id": 39
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Nolte",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23401667709767,
+          44.97734214168307
+        ],
+        "type": "Point"
+      },
+      "id": 40
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Armory",
+        "floor": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23218839430518,
+          44.977214625625066
+        ],
+        "type": "Point"
+      },
+      "id": 41
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Cooke",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23042375540696,
+          44.9761010885191
+        ],
+        "type": "Point"
+      },
+      "id": 42
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "RecWell",
+        "floor": "LL, 1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22973193674771,
+          44.97515775672818
+        ],
+        "type": "Point"
+      },
+      "id": 43
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Physics and Nanotechnology",
+        "floor": 1
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23167705007897,
+          44.97542728168051
+        ],
+        "type": "Point"
+      },
+      "id": 44
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Shepherd",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23234708453894,
+          44.97587540456419
+        ],
+        "type": "Point"
+      },
+      "id": 45
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Rapson",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23324787116916,
+          44.976266231786525
+        ],
+        "type": "Point"
+      },
+      "id": 46
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Mechanical Engineering",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23327189165765,
+          44.975089494194805
+        ],
+        "type": "Point"
+      },
+      "id": 47
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Lind",
+        "floor": "LL"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.233562248443,
+          44.974566911551136
+        ],
+        "type": "Point"
+      },
+      "id": 48
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Keller",
+        "floor": "2, Atrium"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23271076892212,
+          44.97468685643736
+        ],
+        "type": "Point"
+      },
+      "id": 49
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vending Machine",
+        "hall": "Amundson",
+        "floor": 2
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23327551233055,
+          44.97399235609373
+        ],
+        "type": "Point"
+      },
+      "id": 50
     }
   ]
 }
