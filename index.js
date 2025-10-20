@@ -58,18 +58,22 @@ function createCustomMarker(feature, latlng, color) {
 // when adding a new set of objects, copy the following line and change test to your variable
 
 layerGroups.coffee = L.geoJSON(coffee, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.coffee),
     onEachFeature: onEachFeature
 }).addTo(map);
 
 layerGroups.vending = L.geoJSON(vending, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.vending),
     onEachFeature: onEachFeature
 }).addTo(map);
 
-layerGroups.study = L.geoJSON(study, { 
-    onEachFeature: onEachFeature 
+layerGroups.study = L.geoJSON(study, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.study),
+    onEachFeature: onEachFeature
 }).addTo(map);
 
 layerGroups.microwaves = L.geoJSON(microwaves1, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.microwaves),
     onEachFeature: onEachFeature
 }).addTo(map);
 
