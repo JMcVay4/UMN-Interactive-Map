@@ -32,7 +32,7 @@
     position:absolute;
     color: #fff;
     font-size:23px;
-    right:0px;
+    right: -20px;
     margin:15px;
     cursor:pointer;
 }
