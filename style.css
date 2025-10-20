@@ -15,6 +15,7 @@
 
 .side-bar{
    background: #ffffff;
+   
    width: 350px;
    left: -350px;
    height: 100vh;
@@ -28,12 +29,10 @@
 }
 
 
-
-
-
 header{
    background: #510000;
-   padding-top: 0px;
+   padding-top: 10px;
+   padding-bottom: 10px;
   
 }
 header img {
@@ -41,13 +40,13 @@ header img {
    margin: 0px;
    margin-left: 0px;
    border-radius: 50%;
-   border: 3px solid #b4b4b4
+   
 }
 
 
 header h1 {
    text-align: right;
-   font-weight: 1000;
+   font-weight: 750;
    font-size: 25px;
    padding-bottom: 0px;
 }
@@ -68,9 +67,9 @@ header h1 {
 
 .close-btn{
    position:absolute;
-   color: #952828;
+   color: #D4AF37;
    font-size:23px;
-   right:-20px;
+   right:0px;
    margin:15px;
    
    cursor:pointer;
@@ -86,6 +85,18 @@ header h1 {
 .location-panel {
    padding: 20px;
    background: #ffffff;
+}
+
+.title {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.topnav {
+   display: flex;
+   align-items: center;
+   gap: 10px; 
 }
 
 
