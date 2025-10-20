@@ -84,7 +84,6 @@ var microwaves1 = {
       }
     },
 
-
   {
   "type": "FeatureCollection",
   "features": {
