@@ -65,6 +65,16 @@ function toggleLayer(category, isVisible) {
 document.addEventListener('DOMContentLoaded', function() {
     // Bind toggle button events
     document.querySelectorAll('.toggle-btn').forEach(function(button) {
+        var category = button.getAttribute('data-category');
+        if (category === coffee) {
+            button.classList.add('active');
+            toggleLayer(category, true);
+        } else {
+            button.classList.remove('active');
+            toggleLayer(category, false);
+        }
+    });
+    document.querySelectorAll('.toggle-btn').forEach(function(button) {
         button.addEventListener('click', function() {
             var category = this.getAttribute('data-category');
             var isActive = this.classList.contains('active');
