@@ -1,6 +1,11 @@
 /* Add a black background color to the top navigation bar */
-
-
+.topnav {
+  background-color: #000000;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
 
 /* Style the search box inside the navigation bar */
 .topnav input[type=text] {
