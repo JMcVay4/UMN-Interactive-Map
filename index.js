@@ -36,7 +36,8 @@ var markerColors = {
     coffee: '#8B4513',      
     study: '#2E8B57',       
     microwaves: '#FF6347',  
-    vending: '#4169E1'      
+    vending: '#4169E1', 
+    bike: '#FFD700'     
 };
 
 function createCustomMarker(feature, latlng, color) {
@@ -74,6 +75,11 @@ layerGroups.study = L.geoJSON(study, {
 
 layerGroups.microwaves = L.geoJSON(microwaves1, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.microwaves),
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+layerGroups.bike = L.geoJSON(bike, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bike),
     onEachFeature: onEachFeature
 }).addTo(map);
 
