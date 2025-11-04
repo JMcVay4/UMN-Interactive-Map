@@ -88,6 +88,14 @@ function toggleLayer(category, isVisible) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.bank-btn').forEach(function(button) {
+        var bank = button.getAttribute('bank');
+        
+    })
+});
+
+
 // Wait for DOM to load before binding events
 document.addEventListener('DOMContentLoaded', function() {
     // Bind toggle button events
