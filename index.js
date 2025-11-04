@@ -1,4 +1,3 @@
-// 定义三个校区的坐标和缩放级别
 var campusLocations = {
     'East Bank': {
         center: [44.9740, -93.2354],
