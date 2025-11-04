@@ -1,3 +1,18 @@
+var campusLocations = {
+    'East Bank': {
+        center: [44.9740, -93.2354],
+        zoom: 15.5
+    },
+    'West Bank': {
+        center: [44.9670, -93.2520],
+        zoom: 15.5
+    },
+    'St. Paul': {
+        center: [44.9850, -93.1850],
+        zoom: 15.5
+    }
+};
+
 var map = L.map('map',{
     zoomControl:false
 }).setView([44.9740, -93.2354], 15.5);
