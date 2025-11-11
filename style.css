@@ -16,8 +16,8 @@
 .side-bar{
    background: #ffffff;
    
-   width: 350px;
-   left: -350px;
+   width: 365px;
+   left: -365px;
    height: 100vh;
    position: fixed;
    top: 0;
