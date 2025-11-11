@@ -18,14 +18,11 @@
    <link rel="stylesheet" href="search.css">
    <link rel="stylesheet" href="dropdown.css">
    <style>#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0; }</style>
-   
 </head>
 <body>
 
-
    <!-- jQuery CDN - Must load before other scripts -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 
    <!-- Menu Button -->
    <div class="menu-btn">
@@ -35,19 +32,13 @@
    <!-- Sidebar -->
    <div class="side-bar">
        <header>  
-           <!-- Close Button -->
-            <div class="title">
+           <div class="title">
                 <div class="close-btn">
-               <i class="fas fa-angle-left"></i>
+                    <i class="fas fa-angle-left"></i>
+                </div>
+                <img src="goldy.png" alt="">
+                <h1 style ="text-align: center; color: #D4AF37">UMN Interactive Map</h1>
            </div>
-          <img src="goldy.png" alt="">
-          <h1>   
-           </h1>
-           <h1 style ="text-align: center; color: #D4AF37">UMN Interactive Map</h1>
-           
-            </div>
-           
-          
        </header>
       
        <!-- Location Categories Panel -->
@@ -55,16 +46,18 @@
 
             <div class="topnav">
                 <div class="dropdown">
-            <button class="dropbtn" id="campusDropdown">
-                East Bank <i class="fas fa-angle-down"></i></button>
-            <div class="dropdown-content">
-                <a href="#" data-campus="East Bank">East Bank</a>
-                <a href="#" data-campus="West Bank">West Bank</a>
-                <a href="#" data-campus="St. Paul">St. Paul</a>
-            </div>
-            </div>
+                    <button class="dropbtn" id="campusDropdown">
+                        East Bank <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-campus="East Bank">East Bank</a>
+                        <a href="#" data-campus="West Bank">West Bank</a>
+                        <a href="#" data-campus="St. Paul">St. Paul</a>
+                    </div>
+                </div>
                 <input type="text" placeholder="Search markers..." id="searchInput">
             </div>
+
             <div class="search-mode">
                 <label class="radio-option">
                     <input type="radio" name="searchMode" value="mark" checked>
@@ -75,15 +68,17 @@
                     <span>Category</span>
                 </label>
             </div>
+
             <div id="searchNoResults" class="search-no-results" style="display: none;">
                 No results
             </div>
 
-            
+            <!-- ✅ ADD LOCATION BUTTON -->
+            <button id="add-btn" class="toggle-btn add-btn">
+                <i class="fas fa-plus"></i> Add Location
+            </button>
 
-           <h3 style = "text-align: left; color: #800000; margin-top: 20px;"> Location Categories</h3>
-           
-
+            <h3 style = "text-align: left; color: #800000; margin-top: 20px;"> Location Categories</h3>
 
            <div class="toggle-buttons">
                <button class="toggle-btn" data-category="coffee">
@@ -114,7 +109,7 @@
                     <i class="fas fa-bus"></i>
                     Gopher Bus Stops
                </button>
-                <button class="toggle-btn" data-category="bike">
+               <button class="toggle-btn" data-category="bike">
                     <i class="fas fa-bicycle"></i>
                     Bike Parking
                </button>   
@@ -141,11 +136,41 @@
            </div>
        </div>
    </div>
-  
+
+   <!-- ✅ ADD LOCATION POPUP FORM -->
+   <div id="add-form" class="add-form hidden">
+        <div class="add-form-box">
+            <h3 style="color:#800000;">Add New Location</h3>
+
+            <label>Category:</label>
+            <select id="form-category">
+                <option value="coffee">Coffee</option>
+                <option value="study">Study</option>
+                <option value="microwaves">Microwaves</option>
+                <option value="vending">Vending</option>
+                <option value="bike">Bike Parking</option>
+                <option value="bathrooms">Bathrooms</option>
+            </select>
+
+            <label>Building (Hall):</label>
+            <input type="text" id="form-hall" placeholder="e.g. Keller Hall">
+
+            <label>Floor:</label>
+            <input type="text" id="form-floor" placeholder="e.g. 3">
+
+            <label>Note:</label>
+            <input type="text" id="form-note" placeholder="e.g. Near elevators">
+
+            <div class="form-buttons">
+                <button id="save-location" class="toggle-btn">Save</button>
+                <button id="cancel-location" class="toggle-btn">Cancel</button>
+            </div>
+        </div>
+   </div>
+
     <div id="map"></div>
     <div id="sidebar"></div>
-   <!-- When adding a new set of points, copy the following line and replace test with the name of the file -->
-   
+
    <script src="waypoints/coffee.js"></script>
    <script src="waypoints/vending.js"></script>
    <script src="waypoints/study.js"></script>
@@ -154,13 +179,8 @@
    <script src="waypoints/bathrooms.js"></script>
    <script src="waypoints/parkinggarages.js"></script>
 
-
-   <!-- MAKE SURE THAT WAYPOINTS ARE BEFORE THIS LINE -->
-    <script src="sidebar.js"></script>
+   <script src="sidebar.js"></script>
    <script src="index.js"></script>
    <script src="sidebar.js"></script>
-  
-  
-   
 </body>
 </html>

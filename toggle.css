@@ -2,13 +2,11 @@
    display: grid;
    grid-template-columns: repeat(2, 1fr);
    gap: 10px;
-   
 }
-
 
 .toggle-btn {
    background: #8d8d8d;
-   color: rgb(255, 255, 255);
+   color: #ffffff;
    border: none;
    padding: 12px 15px;
    border-radius: 8px;
@@ -16,14 +14,13 @@
    font-size: 14px;
    font-weight: 500;
    display: flex;
-   width: 155px;
-   
    align-items: center;
+   justify-content: flex-start;
    gap: 10px;
+   width: 155px;
    transition: all 0.3s ease;
    border: 2px solid transparent;
 }
-
 
 .toggle-btn:hover {
    background: #eea846;
@@ -31,21 +28,114 @@
    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-
 .toggle-btn.active {
    background: #440303;
    border-color: #440303;
+   color: #ffffff;
 }
-
 
 .toggle-btn.active:hover {
    background: #eea846;
+   color: #ffffff;
 }
-
 
 .toggle-btn i {
    font-size: 16px;
    width: 20px;
-   
    text-align: center;
+}
+
+/* ✅ FIXED missing semicolons below */
+#add-btn {
+   background: #440303;
+   color: #ffffff;
+   font-size: 15px;
+   font-weight: 600;
+   padding: 12px 20px;
+   border-radius: 8px;
+   border: none;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   width: 100%;
+   margin-top: 15px;
+}
+
+#add-btn:hover {
+   background: #440303;
+   transform: translateY(-2px);
+   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+#add-btn.adding {
+   background: #ffcc00;
+   color: #000;
+}
+
+/* ✅ Centered, matching maroon Save/Cancel buttons */
+.form-buttons {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-top: 15px;
+}
+
+#save-location,
+#cancel-location {
+   background: #440303;
+   color: #fff;
+   border: none;
+   border-radius: 6px;
+   padding: 8px 14px;
+   cursor: pointer;
+   font-weight: 600;
+   transition: background 0.2s ease;
+}
+
+#save-location:hover,
+#cancel-location:hover {
+   background: #eea846;
+   color: #fff;
+}
+
+#add-form {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: white;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+   z-index: 9999;
+   width: 300px;
+}
+
+#add-form.hidden {
+   display: none !important;
+}
+
+#add-form label {
+   display: block;
+   margin-top: 10px;
+   color: #333;
+   font-weight: 500;
+}
+
+#add-form input,
+#add-form select,
+#add-form textarea {
+   width: 100%;
+   padding: 8px;
+   border-radius: 6px;
+   border: 1px solid #ccc;
+   font-size: 14px;
+   margin-top: 4px;
+}
+
+.hidden {
+   display: none !important;
+}
+
+.map-adding {
+   cursor: crosshair;
 }
