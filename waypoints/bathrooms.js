@@ -234,6 +234,96 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Tate Hall",
+        "floor": "Basement",
+        "note": "Room B00-20"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23431059238864,
+          44.97514155834472
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Tate Hall",
+        "floor": "Floor 1",
+        "note": "Room 100-19"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23460229461176,
+          44.97518118924958
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Tate Hall",
+        "floor": "Floor 3",
+        "note": "Room 300-19"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23460615821732,
+          44.975162057092206
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Amudson Hall",
+        "floor": "Floor 3",
+        "note": "Room 372"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2325988485588,
+          44.97395174454789
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Amudson Hall",
+        "floor": "Floor 2",
+        "note": "Room 274"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.232597061402,
+          44.973975765961484
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
   ]
 
 }

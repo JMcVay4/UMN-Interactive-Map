@@ -52,7 +52,8 @@ var markerColors = {
     study: '#2E8B57',       
     microwaves: '#FF6347',  
     vending: '#4169E1', 
-    bike: '#FFD700'     
+    bike: '#FFD700',
+    bathrooms: '#9644DA'     
 };
 
 // Category name mapping for search (category key -> display names)
@@ -109,7 +110,7 @@ layerGroups.bike = L.geoJSON(bike, {
 }).addTo(map);
 
 layerGroups.bathrooms = L.geoJSON(bathrooms, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bike),
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
     onEachFeature: onEachFeature
 }).addTo(map);
 
