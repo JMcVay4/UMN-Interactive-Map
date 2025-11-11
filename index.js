@@ -1,6 +1,21 @@
+var campusLocations = {
+    'East Bank': {
+        center: [44.9740, -93.2354],
+        zoom: 15.5
+    },
+    'West Bank': {
+        center: [44.9670, -93.2520],
+        zoom: 15.5
+    },
+    'St. Paul': {
+        center: [44.9850, -93.1850],
+        zoom: 15.5
+    }
+};
+
 var map = L.map('map',{
     zoomControl:false
-}).setView([44.9740, -93.2354], 15.5);
+}).setView(campusLocations['East Bank'].center, campusLocations['East Bank'].zoom);
 L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom:18,
@@ -37,10 +52,10 @@ var markerColors = {
     study: '#2E8B57',       
     microwaves: '#FF6347',  
     vending: '#4169E1', 
-    bike: '#FFD700',   
-    bathrooms: '#8d00c4ff'  
+    bike: '#FFD700'     
 };
 
+// Category name mapping for search (category key -> display names)
 var categoryNames = {
     coffee: ['coffee', 'coffee shop', 'coffee shops', 'cafe', 'café', 'espresso', 'latte', 'cappuccino', 'brew', 'java', 'roast', 'barista', '咖啡', '咖啡店', '咖啡馆', '星巴克', '拿铁', '美式咖啡'],
     study: ['study', 'study space', 'study spaces', 'studying', 'library', 'reading', 'quiet', 'desk', 'workspace', 'learning', 'academic', '学习', '学习空间', '自习', '自习室', '图书馆', '阅览室', '安静'],
@@ -90,11 +105,6 @@ layerGroups.microwaves = L.geoJSON(microwaves1, {
 
 layerGroups.bike = L.geoJSON(bike, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bike),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.bathrooms = L.geoJSON(bathrooms, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
     onEachFeature: onEachFeature
 }).addTo(map);
 
