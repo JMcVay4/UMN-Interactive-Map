@@ -108,6 +108,11 @@ layerGroups.bike = L.geoJSON(bike, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
+layerGroups.bathrooms = L.geoJSON(bathrooms, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bike),
+    onEachFeature: onEachFeature
+}).addTo(map);
+
 // Function to toggle layer visibility
 function toggleLayer(category, isVisible) {
     if (layerGroups[category]) {
