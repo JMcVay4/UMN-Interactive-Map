@@ -1,5 +1,4 @@
 var parkinggarages = {
-
   "type": "FeatureCollection",
   "features": [
     {
@@ -198,4 +197,3 @@ var parkinggarages = {
     },
   ]
 };
-
