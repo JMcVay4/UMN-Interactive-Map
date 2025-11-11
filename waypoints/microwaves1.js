@@ -118,6 +118,127 @@ var microwaves1 = {
       }
     },
 
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Mechanical Engineering",
+          "floor": "Basement",
+          "note": "Near Room 16"
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.23315991828554,
+          44.97514420921925
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Akerman/Shephard Lab",
+          "floor": "Basement",
+          "note": "In the tunnel"
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.23233106666125,
+          44.97568471974782
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Ralph Rapson Hall",
+          "floor": "Basement",
+          "note": "By Room 26"
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.23309990532105,
+          44.976151167793375
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Morril Hall",
+          "floor": "Basement",
+          "note": ""
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.2344542559768,
+          44.97589935997033
+        ],
+        "type": "Point"
+      }
+    },
+
+     {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Tate Hall",
+          "floor": "Basement",
+          "note": ""
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.23464806426527,
+          44.97550292588653
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Vincent Hall",
+          "floor": "Basement",
+          "note": "Near Room 6"
+      },
+      "geometry": {
+        "coordinates" : [
+           -93.23470264933025,
+          44.97448730947201
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Appleby Hall",
+          "floor": "Lower Level",
+          "note": "Room 26"
+      },
+      "geometry": {
+        "coordinates" : [
+           -93.23723505242485,
+          44.9749029113745
+        ],
+        "type": "Point"
+      }
+    },
+
+
+
   {
   "type": "FeatureCollection",
   "features": {
