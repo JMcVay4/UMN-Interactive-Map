@@ -13,7 +13,8 @@ var parkinggarages = {
           44.9744175092452
         ],
         "type": "Point"
-      }
+      },
+        "id": 0
     },
     {
       "type": "Feature",
@@ -26,12 +27,13 @@ var parkinggarages = {
           44.97179294112621
         ],
         "type": "Point"
-      }
+      },
+        "id":1
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "Fourth Street Parking Ramp"
+        "name":"Fourth Street Parking Ramp"
       },
       "geometry": {
         "coordinates": [
