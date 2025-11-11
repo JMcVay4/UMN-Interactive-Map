@@ -237,6 +237,74 @@ var microwaves1 = {
       }
     },
 
+     {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Bruininks Hall",
+          "floor": "Basement",
+          "note": ""
+      },
+      "geometry": {
+        "coordinates" : [
+           -93.23730196684792,
+          44.9740787714683
+        ],
+        "type": "Point"
+      }
+    },
+
+     {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "The Cube",
+          "floor": "",
+          "note": "Next to Starbucks"
+      },
+      "geometry": {
+        "coordinates" : [
+           -93.23617466974302,
+          44.97340767547243
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Coffman Memorial Union",
+          "floor": "Basement",
+          "note": "In The Whole music club"
+      },
+      "geometry": {
+        "coordinates" : [
+           -93.23500883515662,
+          44.97269596310977
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Moos Tower",
+          "floor": "",
+          "note": "By Freshii towards the library"
+      },
+      "geometry": {
+        "coordinates" : [
+           -93.23147251474377,
+          44.972991367329456
+        ],
+        "type": "Point"
+      }
+    },
+
 
 
   {
