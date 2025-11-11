@@ -84,6 +84,40 @@ var microwaves1 = {
       }
     },
 
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Keller Hall",
+          "floor": "Floor 2",
+          "note": "Room 2-133"
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.23226380572659,
+          44.974693158735334
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Keller Hall",
+          "floor": "Floor 2",
+          "note": "Room 2-133"
+      },
+      "geometry": {
+        "coordinates" : [
+          -93.23226380572659,
+          44.974693158735334
+        ],
+        "type": "Point"
+      }
+    },
+
   {
   "type": "FeatureCollection",
   "features": {
