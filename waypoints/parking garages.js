@@ -110,3 +110,97 @@ var parkinggarages = {
     },
   ]
 }
+            {
+      "type": "Feature",
+      "properties": {
+        "name": "University Office Plaza Garage"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22400845731532,
+          44.9749354007742
+        ],
+        "type": "Point"
+      },
+              "id":7
+    },
+  ]
+}
+           {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -93.22870489044223,
+          44.9759535065152
+        ],
+        "type": "Point"
+      },
+           "id": 8
+    },
+  ]
+}
+        {
+      "type": "Feature",
+      "properties": {
+        "name": "Armory Garage"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2318168024883,
+          44.977130027819584
+        ],
+        "type": "Point"
+      },
+          "id": 9
+    },
+  ]
+}
+        {
+      "type": "Feature",
+      "properties": {
+        "name": "Northrop Garage'
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23539015104718,
+          44.975931084496835
+        ],
+        "type": "Point"
+      },
+          "id": 10
+    },
+  ]
+}
+        {
+      "type": "Feature",
+      "properties": {
+        "name": "Maroon Lot"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22520897146993,
+          44.97801353682675
+        ],
+        "type": "Point"
+      },
+        "id": 11
+    },
+  ]
+}
+              {
+      "type": "Feature",
+      "properties": {
+        "name": "Gold Lot"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22244522350236,
+          44.97724609643021
+        ],
+        "type": "Point"
+      },
+        "id":12
+    },
+  ]
+}
