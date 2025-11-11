@@ -53,7 +53,8 @@ var markerColors = {
     microwaves: '#FF6347',  
     vending: '#4169E1', 
     bike: '#FFD700',
-    bathrooms: '#9644DA'     
+    bathrooms: '#9644DA' ,
+    parkinggarages: '#f27fffff'      
 };
 
 // Category name mapping for search (category key -> display names)
@@ -104,10 +105,16 @@ layerGroups.microwaves = L.geoJSON(microwaves1, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
+layerGroups.parkinggarages = L.geoJSON(parkinggarages, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.parkinggarages),
+    onEachFeature: onEachFeature
+}).addTo(map);
+
 layerGroups.bike = L.geoJSON(bike, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bike),
     onEachFeature: onEachFeature
 }).addTo(map);
+
 
 layerGroups.bathrooms = L.geoJSON(bathrooms, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
