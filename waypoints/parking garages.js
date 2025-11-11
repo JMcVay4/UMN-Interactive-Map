@@ -43,7 +43,7 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 2
-    }
+    },
   ]
 }
          {
@@ -59,7 +59,7 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 3
-    }
+    },
   ]
 }
            {
@@ -75,7 +75,7 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 4
-    }
+    },
   ]
 }
          {
@@ -91,7 +91,7 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 5
-    }
+    },
   ]
 }
          {
@@ -107,6 +107,6 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 6
-    }
+    },
   ]
 }
