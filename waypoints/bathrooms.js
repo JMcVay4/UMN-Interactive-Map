@@ -6,8 +6,8 @@ var bathrooms = {
       "properties": {
         "name": "Gender-Neutral Bathroom",
         "hall": "Ford Hall",
-        "floor": "",
-        "note": ""
+        "floor": "4",
+        "note": "Room 430"
       },
       "geometry": {
         "coordinates": [
