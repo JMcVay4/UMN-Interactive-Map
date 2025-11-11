@@ -305,9 +305,95 @@ var microwaves1 = {
       }
     },
 
+     {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Folwell Hall",
+          "floor": "Basement",
+          "note": "In Room 15"
+      },
+      "geometry": {
+        "coordinates" : [
+            -93.23445637127499,
+          44.97827444430706
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Jackson Hall/MCB",
+          "floor": "4",
+          "note": "In skyway connecting Jackson & MCB"
+      },
+      "geometry": {
+        "coordinates" : [
+            -93.23304376047723,
+          44.97295274680664
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Boynton Health",
+          "floor": "1",
+          "note": ""
+      },
+      "geometry": {
+        "coordinates" : [
+            -93.23421236978159,
+          44.97228430698664
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Phillips-Wangensteen Building",
+          "floor": "2",
+          "note": "In main corridor/hallway"
+      },
+      "geometry": {
+        "coordinates" : [
+            -93.23139826451394,
+          44.97234267949915
+        ],
+        "type": "Point"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+         "name": "Microwave",
+          "hall": "Nils Hasselmo Hall",
+          "floor": "2",
+          "note": "In vending area"
+      },
+      "geometry": {
+        "coordinates" : [
+            -93.23424142350731,
+          44.97293363667623
+        ],
+        "type": "Point"
+      }
+    },
+
+    
 
 
-  {
+  /*{
   "type": "FeatureCollection",
   "features": {
     
@@ -321,7 +407,7 @@ var microwaves1 = {
         "type": "Point"
       }
     }
-  }
+  }*/
 ]
 }
      
