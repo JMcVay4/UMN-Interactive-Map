@@ -534,6 +534,78 @@ document.addEventListener('DOMContentLoaded', function() {
                 searchMarkers(query, mode);
             });
         });
+        
     }
+    let adding = false;
+    let clickedCoords = null;
+
+    const addBtn = document.getElementById("add-btn");
+    const addForm = document.getElementById("add-form");
+    const saveBtn = document.getElementById("save-location");
+    const cancelBtn = document.getElementById("cancel-location");
+
+    if (!addBtn || !addForm) return;
+
+    addBtn.addEventListener("click", function () {
+        adding = !adding;
+        if (adding) {
+            addBtn.innerHTML = "Click map to choose location";
+            addBtn.classList.add("adding");
+            document.getElementById("map").classList.add("map-adding");
+        } else {
+            addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
+            addBtn.classList.remove("adding");
+            document.getElementById("map").classList.remove("map-adding");
+            addForm.classList.add("hidden");
+        }
+    });
+
+    map.on("click", function (e) {
+    if (!adding) return;
+    clickedCoords = e.latlng;
+    addForm.style.display = "block";
+    addForm.classList.remove("hidden");
+    addForm.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+    saveBtn.addEventListener("click", function () {
+        const category = document.getElementById("form-category").value;
+        const hall = document.getElementById("form-hall").value || "Unknown";
+        const floor = document.getElementById("form-floor").value || "N/A";
+        const note = document.getElementById("form-note").value || "";
+
+        if (!clickedCoords || !layerGroups[category]) return;
+
+        const popupText = `
+            <b style="color:#800000;">${category.charAt(0).toUpperCase() + category.slice(1)}</b><br>
+            Building: ${hall}<br>
+            Floor: ${floor}<br>
+            Note: ${note}
+        `;
+
+        const color = markerColors[category] || "#808080";
+        const marker = createCustomMarker({ properties: { name } }, clickedCoords, color);
+        marker.bindPopup(popupText).addTo(layerGroups[category]);
+
+        addForm.classList.add("hidden");
+        addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
+        addBtn.classList.remove("adding");
+        document.getElementById("map").classList.remove("map-adding");
+        adding = false;
+        clickedCoords = null;
+
+        document.getElementById("form-hall").value = "";
+        document.getElementById("form-floor").value = "";
+        document.getElementById("form-note").value = "";
+    });
+
+    cancelBtn.addEventListener("click", function () {
+        addForm.classList.add("hidden");
+        addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
+        addBtn.classList.remove("adding");
+        document.getElementById("map").classList.remove("map-adding");
+        adding = false;
+    });
+
 });
 
