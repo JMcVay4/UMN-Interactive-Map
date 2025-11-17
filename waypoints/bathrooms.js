@@ -2051,6 +2051,168 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Pillsbury Hall",
+        "floor": "1",
+        "note": "Room 107"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2345261391705,
+          44.97701495276013
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Nolte Center",
+        "floor": "Basement",
+        "note": "Room 6A"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23400927553367,
+          44.97729684617238
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Nolte Center",
+        "floor": "Basement",
+        "note": "Room 8A"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23395473549193,
+          44.977251487515076
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Folwell Hall",
+        "floor": "Ground Floor",
+        "note": "Room 19"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23434381229923,
+          44.97827528272214
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Folwell Hall",
+        "floor": "1",
+        "note": "Room 117A"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2343356397324,
+          44.97826275707277
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "1425 University Avenue SE",
+        "floor": "1",
+        "note": "Room 132"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2354179797044,
+          44.97936325692643
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "1425 University Avenue SE",
+        "floor": "2",
+        "note": "Room 240"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23539662093135,
+          44.979323975146
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "1425 University Avenue SE",
+        "floor": "2",
+        "note": "Room 235"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23541968840603,
+          44.97930101039984
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Ridder Arena/Baseline Tennis Center",
+        "floor": "1",
+        "note": "Room 124"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.229194498606,
+          44.97893135879244
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
         
   ]
 
