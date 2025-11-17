@@ -1223,6 +1223,835 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Oak Street Parking Ramp",
+        "floor": "1",
+        "note": "Room 110, 115, 116"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22674982639785,
+          44.97224818057407
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "717 Delaware St SE",
+        "floor": "4",
+        "note": "Room 405A"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22792856991659,
+          44.97279820663945
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "717 Delaware St SE",
+        "floor": "5",
+        "note": "Room 505B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22792856991659,
+          44.97289842984165
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "717 Delaware St SE",
+        "floor": "1",
+        "note": "Room 102C, 102D"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2277562686958,
+          44.97291468223665
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Frontier Hall",
+        "floor": "1",
+        "note": "Room 120"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22820152571701,
+          44.9708036748402
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Pioneer Hall",
+        "floor": "1",
+        "note": "Room C103"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22938237796374,
+          44.970895320347125
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "UM Health Clinics and Surgery Center",
+        "floor": "1",
+        "note": "Room 1-256"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22467354740535,
+          44.97098380491593
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Health Sciences Education Center",
+        "floor": "4",
+        "note": "Room 4-132"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23073129460282,
+          44.972185962955024
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Health Sciences Education Center",
+        "floor": "6",
+        "note": "Room 6-183"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23078869051372,
+          44.97208288930412
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Health Sciences Education Center",
+        "floor": "7",
+        "note": "Room 7-170"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23080193572459,
+          44.97179240801813
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "2",
+        "note": "Room 2-242B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23119706911775,
+          44.97236885206149
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "8",
+        "note": "Room 8-204"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23155027472383,
+          44.97233137087457
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "12",
+        "note": "Room 12-178"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23166506654624,
+          44.972409456653
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "6",
+        "note": "Room 6-230"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23138691712998,
+          44.972478172049705
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "1",
+        "note": "Room 1-253"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23118382390552,
+          44.97250315944606
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "1",
+        "note": "Room 1-261, 1-263"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23137749151347,
+          44.97262902573803
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Phillips-Wangensteen Building",
+        "floor": "1",
+        "note": "Room 1-229"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23095472667391,
+          44.97248311456937
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Malcolm Moos Health Sciences Tower",
+        "floor": "15",
+        "note": "Room 15-124"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23146429099239,
+          44.97292532333461
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Malcolm Moos Health Sciences Tower",
+        "floor": "6",
+        "note": "Room 6-195"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23166133989737,
+          44.97287903409969
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Weaver-Densford Hall",
+        "floor": "1",
+        "note": "Room 1-106, 1-108"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23086782311238,
+          44.97327248850314
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "7",
+        "note": "Room 730"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23284997884754,
+          44.972454141290456
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "5",
+        "note": "Room A579"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23285952030469,
+          44.9724136408457
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "7",
+        "note": "Room 752"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23282612497742,
+          44.972140261797534
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "5",
+        "note": "Room B580-1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23223455465315,
+          44.97210651124462
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "4",
+        "note": "Room B448"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23226317902348,
+          44.97196813376891
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "3",
+        "note": "Room B371-1, B372-1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23226317902348,
+          44.97191413271213
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "5",
+        "note": "Room B561-1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23236800843812,
+          44.9716364778852
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "3",
+        "note": "Room B356-1, B357-1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23236279122852,
+          44.97160136774605
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "2",
+        "note": "Room C249-1, C249-2"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23255478273998,
+          44.97147083167408
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "3",
+        "note": "Room C310"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23285091555019,
+          44.97184497900494
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "5",
+        "note": "Room C571"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23285091555019,
+          44.97184497900494
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "4",
+        "note": "Room C452"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2334071730711,
+          44.97146799395753
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mayo Building & Additions",
+        "floor": "3",
+        "note": "Room C366-1, C366-2"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23350153738045,
+          44.97162387237253
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Variety Club Research",
+        "floor": "4",
+        "note": "Room 453B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23395312010723,
+          44.97133328151995
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "5",
+        "note": "Room 563"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23411375059261,
+          44.97180862565955
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "1",
+        "note": "Room 128T"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2341022606556,
+          44.971889509190646
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "1",
+        "note": "Room 114T, 122T"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2341053697303,
+          44.97201928108839
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "5",
+        "note": "Room 533A"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23411023678473,
+          44.97223872201141
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "4",
+        "note": "Room 403"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23418816605835,
+          44.97221509443003
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "5",
+        "note": "Room N524"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23436907330095,
+          44.972337170160586
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "2",
+        "note": "Room N213T"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23441917069087,
+          44.972287946106775
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "2",
+        "note": "Room W232"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23448152513825,
+          44.97216901229123
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "Basement",
+        "note": "Room W28"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23443977731291,
+          44.97215916745506
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Boynton Health Service",
+        "floor": "2",
+        "note": "Room W238"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23456780397686,
+          44.97216901229123
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Coffman Memorial Union",
+        "floor": "Ground",
+        "note": "Room 69"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2348377228403,
+          44.972953692458645
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Coffman Memorial Union",
+        "floor": "2",
+        "note": "Room 237B"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23559453160406,
+          44.97302314934578
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+        
   ]
 
 }
