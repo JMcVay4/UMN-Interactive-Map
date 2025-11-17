@@ -755,6 +755,114 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Northrop Memorial Auditorium",
+        "floor": "Ground Floor",
+        "note": "Room 97-1"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23564916354329,
+          44.97625718808277
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Northrop Memorial Auditorium",
+        "floor": "Ground Floor",
+        "note": "Room 66"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23564257380353,
+          44.97667707238455
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Northrop Memorial Auditorium",
+        "floor": "2",
+        "note": "Room 241"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23505609118753,
+          44.97668950308301
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Northrop Memorial Auditorium",
+        "floor": "Ground Floor",
+        "note": "Room 29"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23514615031569,
+          44.97660093429667
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Northrop Memorial Auditorium",
+        "floor": "Ground Floor",
+        "note": "Room 3"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23504730493124,
+          44.97625908857452
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Northrop Memorial Auditorium",
+        "floor": "4",
+        "note": "Room 416"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23509343277746,
+          44.97628861169491
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
   ]
 
 }
