@@ -1115,6 +1115,114 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Physics and Nanotechnology Building",
+        "floor": "1",
+        "note": "Room 172"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23156668526264,
+          44.97546714309718
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Civil Engineering Building",
+        "floor": "Level Minus Three",
+        "note": "Room 331"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2317000033773,
+          44.976225266559084
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Cooke Hall",
+        "floor": "1",
+        "note": "Room 113"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23032056620467,
+          44.97623229093497
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Cooke Hall",
+        "floor": "3",
+        "note": "Room 303"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23035702030509,
+          44.97584421662441
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "University Recreation and Wellness Center",
+        "floor": "Basement",
+        "note": "Room 66"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23035702030509,
+          44.97584421662441
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "University Recreation and Wellness Center",
+        "floor": "3",
+        "note": "Room 354"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22940976091681,
+          44.975181065821914
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
   ]
 
 }
