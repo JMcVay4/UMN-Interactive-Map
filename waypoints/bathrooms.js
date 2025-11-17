@@ -863,6 +863,258 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Lind Hall",
+        "floor": "Lower Level",
+        "note": "Room L115"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23361369924496,
+          44.97459044431568
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Lind Hall",
+        "floor": "4",
+        "note": "Room 410"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23345949054945,
+          44.97459203687549
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Lind Hall",
+        "floor": "4",
+        "note": "Room 409"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23345949054945,
+          44.974619110388886
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Keller Hall",
+        "floor": "3",
+        "note": "Room 3-135"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23345949054945,
+          44.974619110388886
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mechanical Engineering",
+        "floor": "Basement",
+        "note": "Room 20C"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23348553598834,
+          44.975433991161566
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mechanical Engineering",
+        "floor": "Basement",
+        "note": "Room 20D"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23344595653147,
+          44.97546283850539
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mechanical Engineering",
+        "floor": "4",
+        "note": "Room 426"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23340157956426,
+          44.97544417257882
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Mechanical Engineering",
+        "floor": "4",
+        "note": "Room 428"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23338718703462,
+          44.97543144580695
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Akerman Hall",
+        "floor": "1",
+        "note": "Room 118A"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23236620429178,
+          44.97537369953301
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Shepherd Laboratories",
+        "floor": "1",
+        "note": "Room 103"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23263011664385,
+          44.97587774570047
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Shepherd Laboratories",
+        "floor": "3",
+        "note": "Room 303"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23261512068193,
+          44.9758697895426
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Shepherd Laboratories",
+        "floor": "5",
+        "note": "Room 509"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23254165869895,
+          44.9759844019417
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Shepherd Laboratories",
+        "floor": "2",
+        "note": "Room 221"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23256540230518,
+          44.97596053350992
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Ralph Rapson Hall",
+        "floor": "1",
+        "note": "Room 113"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23307866371943,
+          44.97640979277452
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
   ]
 
 }
