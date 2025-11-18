@@ -92,12 +92,35 @@ function createCustomMarker(feature, latlng, color) {
     });
 }
 
+function getWaypoint(filename, layerName, color) {
+    fetch("http://23.152.226.72:8080/waypoint/" + filename)
+        .then(parseWaypoint.bind(null, layerName, color));
+}
+
+function parseWaypoint(response, layerName, color) {
+    if(response.status !== 200) {
+        return;
+    }
+
+    response.json()
+        .then(addWaypoints.bind(null, layerName, color));
+}
+
+function addWaypoints(data, layerName, color) {
+    layers[layerName] = L.geoJSON(data, {
+        pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, color),
+        onEachFeature: onEachFeature,
+    }).addTo(map);
+}
+
 // when adding a new set of objects, copy the following line and change test to your variable
 
-layerGroups.coffee = L.geoJSON(coffee, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.coffee),
-    onEachFeature: onEachFeature
-}).addTo(map);
+getWaypoint("coffee.json", "coffee", markerColors.coffee);
+
+// layerGroups.coffee = L.geoJSON(coffee, {
+//     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.coffee),
+//     onEachFeature: onEachFeature
+// }).addTo(map);
 
 layerGroups.vending = L.geoJSON(vending, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.vending),
