@@ -104,7 +104,7 @@ var parkinggarages = {
         "id": 6
     },
   
-            {
+        {
       "type": "Feature",
       "properties": {
         "name": "University Office Plaza Garage"
@@ -117,6 +117,7 @@ var parkinggarages = {
         "type": "Point"
       },
               "id":7
+    },
         {
       "type": "Feature",
       "properties": {
@@ -189,6 +190,7 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 12
+    },
     {
       "type": "Feature",
       "properties": {
@@ -230,6 +232,7 @@ var parkinggarages = {
         "type": "Point"
       },
         "id": 15
+    },
     {
       "type": "Feature",
       "properties": {
