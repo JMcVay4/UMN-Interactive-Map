@@ -42,6 +42,14 @@ function onEachFeature(feature, layer) {
         if (feature.properties.note) {
             popupContent += "<br>Note: " + feature.properties.note;
         }
+
+        if (feature.properties.stop) {
+            popupContent += "<br>Stop: " + feature.properties.stop;
+        }
+
+        if (feature.properties.route) {
+            popupContent += "<br>Routes: " + feature.properties.route;
+        }
         
         layer.bindPopup(popupContent);
     }
@@ -54,7 +62,8 @@ var markerColors = {
     vending: '#4169E1', 
     bike: '#FFD700',
     bathrooms: '#9644DA' ,
-    parkinggarages: '#f27fffff'      
+    parkinggarages: '#f27fffff' ,
+    busstops: '#e00d0dff'     
 };
 
 // Category name mapping for search (category key -> display names)
@@ -117,6 +126,11 @@ layerGroups.bike = L.geoJSON(bike, {
 
 
 layerGroups.bathrooms = L.geoJSON(bathrooms, {
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+layerGroups.busstops = L.geoJSON(busstops, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
     onEachFeature: onEachFeature
 }).addTo(map);
@@ -581,6 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const floor = document.getElementById("form-floor").value || "N/A";
         const note = document.getElementById("form-note").value || "";
 
+
         if (!clickedCoords || !layerGroups[category]) return;
 
         const popupText = `
@@ -588,6 +603,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Building: ${hall}<br>
             Floor: ${floor}<br>
             Note: ${note}
+            
         `;
 
         const color = markerColors[category] || "#808080";
