@@ -59,8 +59,6 @@ var parkinggarages = {
       },
         "id": 3
     },
-  
-
            {
       "type": "Feature",
       "properties": {
@@ -75,12 +73,10 @@ var parkinggarages = {
       },
         "id": 4
     },
-  
-
          {
       "type": "Feature",
       "properties": {
-        "name": "Oak Streat Parking Ramp"
+        "name": "Oak Street Parking Ramp"
       },
       "geometry": {
         "coordinates": [
@@ -121,21 +117,6 @@ var parkinggarages = {
         "type": "Point"
       },
               "id":7
-    },
-  
-           {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          -93.22870489044223,
-          44.9759535065152
-        ],
-        "type": "Point"
-      },
-           "id": 8
-    },
-  
         {
       "type": "Feature",
       "properties": {
@@ -148,7 +129,7 @@ var parkinggarages = {
         ],
         "type": "Point"
       },
-          "id": 9
+          "id": 8
     },
   
         {
@@ -163,7 +144,7 @@ var parkinggarages = {
         ],
         "type": "Point"
       },
-          "id": 10
+          "id": 9
     },
   
         {
@@ -178,7 +159,7 @@ var parkinggarages = {
         ],
         "type": "Point"
       },
-        "id": 11
+        "id": 10
     },
   
               {
@@ -193,7 +174,146 @@ var parkinggarages = {
         ],
         "type": "Point"
       },
-        "id":12
+        "id":11
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lot 37"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2282351018558,
+          44.979655892362786
+        ],
+        "type": "Point"
+      },
+        "id": 12
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nolte Center Garage"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2336836546119,
+          44.97752764810218
+        ],
+        "type": "Point"
+      },
+        "id": 13
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "M Health Fairview Patient and Visitor Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22936083192681,
+          44.97290466530734
+        ],
+        "type": "Point"
+      },
+        "id": 14
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East River Road Garage"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.23533217417582,
+          44.97178878182288
+        ],
+        "type": "Point"
+      },
+        "id": 15
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "19th Avenue Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24609644097936,
+          44.97057850078221
+        ],
+        "type": "Point"
+      },
+        "id": 16
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "21st Avenue Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24333169719871,
+          44.9696923994571
+        ],
+        "type": "Point"
+      },
+        "id": 17
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gortner Avenue Parking Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.18275900949824,
+          44.98341958838813
+        ],
+        "type": "Point"
+      },
+        "id": 18
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Prospect Park Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.21577381306082,
+          44.9721593536261
+        ],
+        "type": "Point"
+      },
+        "id": 19
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "University Avenue Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.22862457338226,
+          44.975944657907206
+        ],
+        "type": "Point"
+      },
+        "id": 20
+    },
+    
+     {
+      "type": "Feature",
+      "properties": {
+        "name": "West Bank Office Building Parking Ramp"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24774168192137,
+          44.97639146424089
+        ],
+        "type": "Point"
+      },
+        "id": 21
     },
   ]
 };
