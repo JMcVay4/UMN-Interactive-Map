@@ -6,7 +6,7 @@ var busstops = {
       "properties": {
         "name": "Bus Stop",
         "stop": "Washington Ave & Coffman Union",
-        "route": "121, 122"
+        "route": "121, 122, 123"
       },
       "geometry": {
         "coordinates": [
