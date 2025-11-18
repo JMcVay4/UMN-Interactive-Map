@@ -622,7 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!clickedCoords || !layerGroups[category]) return;
 
         const popupText = `
-            <b style="color:#800000;">${category.charAt(0).toUpperCase() + category.slice(1)}</b><br>
+            <b style="color:#510000;">${category.charAt(0).toUpperCase() + category.slice(1)}</b><br>
             Building: ${hall}<br>
             Floor: ${floor}<br>
             Note: ${note}
