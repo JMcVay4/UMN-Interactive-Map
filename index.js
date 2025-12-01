@@ -56,14 +56,14 @@ function onEachFeature(feature, layer) {
 }
 
 var markerColors = {
-    coffee: '#8B4513',      
-    study: '#2E8B57',       
-    microwaves: '#FF6347',  
-    vending: '#4169E1', 
-    bike: '#FFD700',
-    bathrooms: '#9644DA' ,
-    parkinggarages: '#f27fffff' ,
-    busstops: '#e00d0dff'     
+    coffee: { url: "icons/coffee.png", size: [25, 25] }, 
+    vending: { url: "icons/vending.png", size: [17, 21] }, 
+    study: { url: "icons/book.png", size: [20, 24] }, 
+    microwaves: { url: "icons/microwave.png", size: [24, 24] },
+    bathrooms: { url: "icons/toilet.png", size: [24, 24] },
+    parkinggarages: { url: "icons/parking.png", size: [21, 21] },
+    busstops: { url: "icons/bus.png", size: [30, 30] },
+    bike: { url: "icons/bike.png", size: [30, 30] },
 };
 
 // Category name mapping for search (category key -> display names)
@@ -76,20 +76,32 @@ var categoryNames = {
     bathrooms: ['bathroom', 'bathrooms', 'restroom', 'restrooms', 'toilet', 'toilets', 'washroom', 'washrooms', 'gender-neutral', 'gender neutral', 'all-gender', 'all gender', 'unisex', 'neutral', '卫生间', '洗手间', '厕所', '中性卫生间', '无性别卫生间', '通用卫生间']
 };
 
-function createCustomMarker(feature, latlng, color) {
-    return L.marker(latlng, {
-        icon: L.icon({
+function createCustomMarker(feature, latlng, iconOrColor) {
+    let icon;
+    if (typeof iconOrColor === "object") {
+        // custom icon
+        icon = L.icon({
+            iconUrl: iconOrColor.url,
+            iconSize: iconOrColor.size || [25, 41],
+            iconAnchor: [iconOrColor.size ? iconOrColor.size[0]/2 : 12, iconOrColor.size ? iconOrColor.size[1] : 41],
+            popupAnchor: [1, -34]
+        });
+    } else {
+        // default icon
+        icon = L.icon({
             iconUrl: 'data:image/svg+xml;base64,' + btoa(`
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 41" width="25" height="41">
-                    <path fill="${color}" stroke="#fff" stroke-width="1.5" d="M12.5 0C5.6 0 0 5.6 0 12.5c0 12.5 12.5 28.5 12.5 28.5s12.5-16 12.5-28.5C25 5.6 19.4 0 12.5 0z"/>
+                    <path fill="${iconOrColor}" stroke="#fff" stroke-width="1.5" d="M12.5 0C5.6 0 0 5.6 0 12.5c0 12.5 12.5 28.5 12.5 28.5s12.5-16 12.5-28.5C25 5.6 19.4 0 12.5 0z"/>
                     <circle cx="12.5" cy="12.5" r="4" fill="#fff"/>
                 </svg>
             `),
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34]
-        })
-    });
+        });
+    }
+    
+    return L.marker(latlng, { icon: icon });
 }
 
 function getWaypoint(filename, layerName, color) {
@@ -115,12 +127,12 @@ function addWaypoints(data, layerName, color) {
 
 // when adding a new set of objects, copy the following line and change test to your variable
 
-getWaypoint("coffee.json", "coffee", markerColors.coffee);
+// getWaypoint("coffee.json", "coffee", markerColors.coffee);
 
-// layerGroups.coffee = L.geoJSON(coffee, {
-//     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.coffee),
-//     onEachFeature: onEachFeature
-// }).addTo(map);
+layerGroups.coffee = L.geoJSON(coffee, {
+     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.coffee),
+     onEachFeature: onEachFeature
+ }).addTo(map);
 
 layerGroups.vending = L.geoJSON(vending, {
     pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.vending),
@@ -154,7 +166,7 @@ layerGroups.bathrooms = L.geoJSON(bathrooms, {
 }).addTo(map);
 
 layerGroups.busstops = L.geoJSON(busstops, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
+    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.busstops),
     onEachFeature: onEachFeature
 }).addTo(map);
 
@@ -631,7 +643,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const color = markerColors[category] || "#808080";
         const marker = createCustomMarker({ properties: { name } }, clickedCoords, color);
-        marker.bindPopup(popupText).addTo(layerGroups[category]);
+        marker.addTo(map);                 // add marker to the map
+        layerGroups[category].addLayer(marker);  // add to existing layer group
 
         addForm.classList.add("hidden");
         addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
