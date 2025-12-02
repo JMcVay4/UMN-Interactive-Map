@@ -73,7 +73,9 @@ var categoryNames = {
     vending: ['vending', 'vending machine', 'vending machines', 'snack', 'snacks', 'drink', 'drinks', 'soda', 'candy', 'chips', 'food machine', '自动售货机', '售货机', '零食', '饮料', '贩卖机'],
     microwaves: ['microwave', 'microwaves', 'oven', 'heat', 'warm', 'food', 'lunch', 'meal', '微波炉', '加热', '热饭', '午餐', '食物'],
     bike: ['bike', 'bicycle', 'bike parking', 'bicycle parking', 'cycling', 'cyclist', 'biker', 'bikes', 'bicycles', 'rack', 'bike rack', '自行车', '单车', '自行车停车', '停车', '车架', '自行车架'],
-    bathrooms: ['bathroom', 'bathrooms', 'restroom', 'restrooms', 'toilet', 'toilets', 'washroom', 'washrooms', 'gender-neutral', 'gender neutral', 'all-gender', 'all gender', 'unisex', 'neutral', '卫生间', '洗手间', '厕所', '中性卫生间', '无性别卫生间', '通用卫生间']
+    bathrooms: ['bathroom', 'bathrooms', 'restroom', 'restrooms', 'toilet', 'toilets', 'washroom', 'washrooms', 'gender-neutral', 'gender neutral', 'all-gender', 'all gender', 'unisex', 'neutral', '卫生间', '洗手间', '厕所', '中性卫生间', '无性别卫生间', '通用卫生间'],
+    parkinggarages: ['parking', 'parking garage', 'parking garages', 'garage', 'garages', 'car park', 'car parking', 'vehicle', '停车', '停车场', '停车库', '车库', '停车位'],
+    busstops: ['bus', 'bus stop', 'bus stops', 'busstop', 'busstation', 'bus station', 'transit', 'transportation', 'gopher bus', '公交车', '公交站', '巴士', '巴士站', '公交车站', '交通']
 };
 
 function createCustomMarker(feature, latlng, iconOrColor) {
@@ -214,6 +216,7 @@ function collectAllMarkers() {
 var isSearching = false;
 var searchResultLayers = [];
 var originalButtonOrder = []; // Store original button order for restoration
+var originalButtonStates = {}; // Store original button active states for restoration
 
 // Function to search by category
 function searchByCategory(query) {
@@ -261,33 +264,102 @@ function searchMarkers(query, mode) {
             noResultsElement.style.display = 'none';
         }
         
-        // Restore all buttons visibility and order
-        var toggleButtonsContainer = document.querySelector('.toggle-buttons');
-        if (toggleButtonsContainer && originalButtonOrder.length > 0) {
-            // Remove all buttons
-            var allButtons = Array.from(document.querySelectorAll('.toggle-btn'));
-            allButtons.forEach(function(btn) {
-                toggleButtonsContainer.removeChild(btn);
-            });
-            
-            // Restore original order
-            originalButtonOrder.forEach(function(btn) {
-                btn.style.display = '';
-                toggleButtonsContainer.appendChild(btn);
-            });
+        // Save current button states before restoring (in case they were modified during search)
+        var savedStates = {};
+        if (Object.keys(originalButtonStates).length > 0) {
+            savedStates = originalButtonStates;
         } else {
-            // Fallback: just show all buttons
+            // If no saved states, restore to initial state (all active except filler)
+            Object.keys(layerGroups).forEach(function(category) {
+                savedStates[category] = true; // All layers active by default
+            });
+            // Also handle filler buttons and any other buttons
             document.querySelectorAll('.toggle-btn').forEach(function(button) {
-                button.style.display = '';
+                var category = button.getAttribute('data-category');
+                if (savedStates[category] === undefined) {
+                    savedStates[category] = (category !== 'filler'); // All active except filler
+                }
             });
         }
         
-        // Restore all layer visibility based on toggle button states
-        document.querySelectorAll('.toggle-btn').forEach(function(button) {
-            var category = button.getAttribute('data-category');
-            var isActive = button.classList.contains('active');
-            toggleLayer(category, isActive);
-        });
+        // Reset saved button states so they can be saved again on next search
+        originalButtonStates = {};
+        
+        // Restore all buttons visibility and order (only category buttons in toggleButtonsContainer)
+        var toggleButtonsContainer = document.querySelector('.toggle-buttons');
+        if (toggleButtonsContainer && originalButtonOrder.length > 0) {
+            // Remove all buttons from container
+            var allButtons = Array.from(toggleButtonsContainer.querySelectorAll('.toggle-btn'));
+            allButtons.forEach(function(btn) {
+                if (btn.parentNode === toggleButtonsContainer) {
+                    toggleButtonsContainer.removeChild(btn);
+                }
+            });
+            
+            // Restore original order and states (only buttons with category)
+            originalButtonOrder.forEach(function(btn) {
+                var category = btn.getAttribute('data-category');
+                // Only restore buttons with category (not add-btn)
+                if (category) {
+                    btn.style.display = '';
+                    // Restore saved active state
+                    if (savedStates[category] !== undefined) {
+                        if (savedStates[category]) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    } else {
+                        // If no saved state, restore to initial state (all active except filler)
+                        if (category !== 'filler') {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    }
+                    if (btn.parentNode !== toggleButtonsContainer) {
+                        toggleButtonsContainer.appendChild(btn);
+                    }
+                }
+            });
+        } else {
+            // Fallback: just show all category buttons and restore states
+            if (toggleButtonsContainer) {
+                toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                    var category = button.getAttribute('data-category');
+                    // Only restore buttons with category (not add-btn)
+                    if (category) {
+                        button.style.display = '';
+                        if (savedStates[category] !== undefined) {
+                            if (savedStates[category]) {
+                                button.classList.add('active');
+                            } else {
+                                button.classList.remove('active');
+                            }
+                        } else {
+                            // If no saved state, restore to initial state (all active except filler)
+                            if (category !== 'filler') {
+                                button.classList.add('active');
+                            } else {
+                                button.classList.remove('active');
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Restore all layer visibility based on toggle button states (only category buttons)
+        if (toggleButtonsContainer) {
+            toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                var category = button.getAttribute('data-category');
+                // Only process buttons with category (not add-btn)
+                if (category) {
+                    var isActive = button.classList.contains('active');
+                    toggleLayer(category, isActive);
+                }
+            });
+        }
         
         return [];
     }
@@ -295,14 +367,27 @@ function searchMarkers(query, mode) {
     isSearching = true;
     var results = [];
     
-    // Hide all original layer groups first
-    Object.keys(layerGroups).forEach(function(category) {
-        if (map.hasLayer(layerGroups[category])) {
-            map.removeLayer(layerGroups[category]);
+    // Save button states before search (only if not already saved and we're actually searching)
+    if (Object.keys(originalButtonStates).length === 0 && query && query.trim() !== '') {
+        var toggleButtonsContainer = document.querySelector('.toggle-buttons');
+        if (toggleButtonsContainer) {
+            toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                var category = button.getAttribute('data-category');
+                // Only save buttons with category (not add-btn)
+                if (category) {
+                    originalButtonStates[category] = button.classList.contains('active');
+                }
+            });
         }
-    });
+    }
     
     if (mode === 'category') {
+        // Hide all original layer groups first (only for category search)
+        Object.keys(layerGroups).forEach(function(category) {
+            if (map.hasLayer(layerGroups[category])) {
+                map.removeLayer(layerGroups[category]);
+            }
+        });
         // Search by category
         var matchingCategories = searchByCategory(query);
         var toggleButtonsContainer = document.querySelector('.toggle-buttons');
@@ -313,44 +398,54 @@ function searchMarkers(query, mode) {
                 noResultsElement.style.display = 'none';
             }
             
-            // First, deactivate all toggle buttons
-            document.querySelectorAll('.toggle-btn').forEach(function(button) {
-                button.classList.remove('active');
-            });
+            // First, deactivate all toggle buttons (only category buttons, not add-btn)
+            if (toggleButtonsContainer) {
+                toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                    button.classList.remove('active');
+                });
+            }
             
-            // Collect matching and non-matching buttons
+            // Collect matching and non-matching buttons (only from toggleButtonsContainer)
             var matchingButtons = [];
             var nonMatchingButtons = [];
             
-            document.querySelectorAll('.toggle-btn').forEach(function(button) {
-                var category = button.getAttribute('data-category');
-                if (matchingCategories.indexOf(category) !== -1) {
-                    matchingButtons.push(button);
-                    button.classList.add('active');
-                    button.style.display = ''; // Show matching buttons
-                } else {
-                    nonMatchingButtons.push(button);
-                    button.style.display = 'none'; // Hide non-matching buttons
-                }
-            });
-            
-            // Reorder: matching buttons first, then non-matching (hidden)
             if (toggleButtonsContainer) {
-                // Remove all buttons
-                matchingButtons.forEach(function(btn) {
-                    toggleButtonsContainer.removeChild(btn);
-                });
-                nonMatchingButtons.forEach(function(btn) {
-                    toggleButtonsContainer.removeChild(btn);
+                toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                    var category = button.getAttribute('data-category');
+                    // Skip buttons without category (like add-btn if it's in the container)
+                    if (!category) {
+                        return;
+                    }
+                    if (matchingCategories.indexOf(category) !== -1) {
+                        matchingButtons.push(button);
+                        button.classList.add('active');
+                        button.style.display = ''; // Show matching buttons
+                    } else {
+                        nonMatchingButtons.push(button);
+                        button.style.display = 'none'; // Hide non-matching buttons
+                    }
                 });
                 
-                // Add matching buttons first
+                // Reorder: matching buttons first, then non-matching (hidden)
+                // Remove all buttons from container
+                var allButtonsInContainer = Array.from(toggleButtonsContainer.querySelectorAll('.toggle-btn'));
+                allButtonsInContainer.forEach(function(btn) {
+                    var btnCategory = btn.getAttribute('data-category');
+                    // Only remove buttons with category (not add-btn)
+                    if (btnCategory && btn.parentNode === toggleButtonsContainer) {
+                        toggleButtonsContainer.removeChild(btn);
+                    }
+                });
+                
+                // Add matching buttons first (ensure they're visible)
                 matchingButtons.forEach(function(btn) {
+                    btn.style.display = ''; // Ensure visible
                     toggleButtonsContainer.appendChild(btn);
                 });
                 
                 // Add non-matching buttons (hidden) at the end
                 nonMatchingButtons.forEach(function(btn) {
+                    btn.style.display = 'none'; // Ensure hidden
                     toggleButtonsContainer.appendChild(btn);
                 });
             }
@@ -404,39 +499,74 @@ function searchMarkers(query, mode) {
                 noResultsElement.style.display = 'block';
             }
             
-            // Hide all buttons when no results
-            document.querySelectorAll('.toggle-btn').forEach(function(button) {
-                button.style.display = 'none';
-                button.classList.remove('active');
-            });
+            // Hide all category buttons when no results (but keep add-btn visible)
+            if (toggleButtonsContainer) {
+                toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                    var category = button.getAttribute('data-category');
+                    // Only hide buttons with category (not add-btn)
+                    if (category) {
+                        button.style.display = 'none';
+                        button.classList.remove('active');
+                    }
+                });
+            }
         }
     } else {
         // Search by mark (original search logic)
-        // Restore all buttons visibility when searching by mark
-        document.querySelectorAll('.toggle-btn').forEach(function(button) {
-            button.style.display = '';
+        // First, hide all original layer groups for mark search
+        // Make sure to remove all layers before searching
+        Object.keys(layerGroups).forEach(function(category) {
+            if (map.hasLayer(layerGroups[category])) {
+                map.removeLayer(layerGroups[category]);
+            }
         });
         
-        // Restore original button order if needed
+        // Also clear any search result layers from previous searches
+        searchResultLayers.forEach(function(layer) {
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+            }
+        });
+        searchResultLayers = [];
+        
+        // Restore all buttons visibility when searching by mark
         var toggleButtonsContainer = document.querySelector('.toggle-buttons');
+        if (toggleButtonsContainer) {
+            toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+                var category = button.getAttribute('data-category');
+                // Only restore buttons with category (not add-btn)
+                if (category) {
+                    button.style.display = '';
+                }
+            });
+        }
+        
+        // Restore original button order if needed
         if (toggleButtonsContainer && originalButtonOrder.length > 0) {
-            var currentButtons = Array.from(document.querySelectorAll('.toggle-btn'));
+            var currentButtons = Array.from(toggleButtonsContainer.querySelectorAll('.toggle-btn'));
+            var categoryButtons = currentButtons.filter(function(btn) {
+                return btn.getAttribute('data-category');
+            });
             var needsReorder = false;
             
             // Check if order needs to be restored
-            for (var i = 0; i < Math.min(currentButtons.length, originalButtonOrder.length); i++) {
-                if (currentButtons[i] !== originalButtonOrder[i]) {
+            for (var i = 0; i < Math.min(categoryButtons.length, originalButtonOrder.length); i++) {
+                if (categoryButtons[i] !== originalButtonOrder[i]) {
                     needsReorder = true;
                     break;
                 }
             }
             
             if (needsReorder) {
-                currentButtons.forEach(function(btn) {
-                    toggleButtonsContainer.removeChild(btn);
+                categoryButtons.forEach(function(btn) {
+                    if (btn.parentNode === toggleButtonsContainer) {
+                        toggleButtonsContainer.removeChild(btn);
+                    }
                 });
                 originalButtonOrder.forEach(function(btn) {
-                    toggleButtonsContainer.appendChild(btn);
+                    if (btn.parentNode !== toggleButtonsContainer) {
+                        toggleButtonsContainer.appendChild(btn);
+                    }
                 });
             }
         }
@@ -509,6 +639,8 @@ function searchMarkers(query, mode) {
             if (noResultsElement) {
                 noResultsElement.style.display = 'block';
             }
+            
+            // Don't restore layers when no results - keep them hidden (same as project 3)
         }
     }
     
@@ -517,36 +649,58 @@ function searchMarkers(query, mode) {
 
 // Wait for DOM to load before binding events
 document.addEventListener('DOMContentLoaded', function() {
-    // Save original button order for restoration
-    document.querySelectorAll('.toggle-btn').forEach(function(button) {
-        originalButtonOrder.push(button);
-    });
+    // Get toggle buttons container
+    var toggleButtonsContainer = document.querySelector('.toggle-buttons');
     
-    // Bind toggle button events
-    document.querySelectorAll('.toggle-btn').forEach(function(button) {
-        var category = button.getAttribute('data-category');
-        if (category === coffee) {
-            button.classList.add('active');
-            toggleLayer(category, true);
-        } else {
-            button.classList.remove('active');
-            toggleLayer(category, false);
-        }
-    });
-    document.querySelectorAll('.toggle-btn').forEach(function(button) {
-        button.addEventListener('click', function() {
-            var category = this.getAttribute('data-category');
-            var isActive = this.classList.contains('active');
-            
-            if (isActive) {
-                this.classList.remove('active');
-                toggleLayer(category, false);
-            } else {
-                this.classList.add('active');
-                toggleLayer(category, true);
+    // Save original button order for restoration (only category buttons, not add-btn)
+    if (toggleButtonsContainer) {
+        toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+            var category = button.getAttribute('data-category');
+            // Only save buttons with category (not add-btn)
+            if (category) {
+                originalButtonOrder.push(button);
             }
         });
-    });
+    }
+    
+    // Bind toggle button events
+    // Initialize: show all layers by default (all category buttons active)
+    if (toggleButtonsContainer) {
+        toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+            var category = button.getAttribute('data-category');
+            // Only process buttons with category (not add-btn)
+            if (category) {
+                // Skip filler buttons - they don't have layers
+                if (category !== 'filler') {
+                    button.classList.add('active');
+                    toggleLayer(category, true);
+                } else {
+                    button.classList.remove('active');
+                }
+            }
+        });
+    }
+    
+    // Bind click events for category buttons only
+    if (toggleButtonsContainer) {
+        toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function(button) {
+            var category = button.getAttribute('data-category');
+            // Only bind events for buttons with category (not add-btn)
+            if (category) {
+                button.addEventListener('click', function() {
+                    var isActive = this.classList.contains('active');
+                    
+                    if (isActive) {
+                        this.classList.remove('active');
+                        toggleLayer(category, false);
+                    } else {
+                        this.classList.add('active');
+                        toggleLayer(category, true);
+                    }
+                });
+            }
+        });
+    }
     
     // Bind campus dropdown events
     document.querySelectorAll('.dropdown-content a[data-campus]').forEach(function(link) {
@@ -574,12 +728,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Bind search input events
     var searchInput = document.getElementById('searchInput');
     if (searchInput) {
-        // Search on input
+        // Search on input (only if there's actual content)
         searchInput.addEventListener('input', function() {
             var query = this.value;
             var searchMode = document.querySelector('input[name="searchMode"]:checked');
             var mode = searchMode ? searchMode.value : 'mark';
-            searchMarkers(query, mode);
+            // Only search if there's actual content, otherwise clear search
+            if (query && query.trim() !== '') {
+                searchMarkers(query, mode);
+            } else {
+                searchMarkers('', mode);
+            }
         });
         
         // Also trigger search when search mode changes
@@ -587,7 +746,12 @@ document.addEventListener('DOMContentLoaded', function() {
             radio.addEventListener('change', function() {
                 var query = searchInput.value;
                 var mode = this.value;
-                searchMarkers(query, mode);
+                // Only search if there's actual content, otherwise clear search
+                if (query && query.trim() !== '') {
+                    searchMarkers(query, mode);
+                } else {
+                    searchMarkers('', mode);
+                }
             });
         });
         
