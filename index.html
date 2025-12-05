@@ -78,7 +78,6 @@
                 No results
             </div>
 
-            <!-- ✅ ADD LOCATION BUTTON -->
             <button id="add-btn" class="toggle-btn add-btn">
                 <i class="fas fa-plus" style="color:#D4AF37"></i> Add Location
             </button>
@@ -142,40 +141,40 @@
        </div>
    </div>
 
-   <!-- ✅ ADD LOCATION POPUP FORM -->
    <div id="add-form" class="add-form hidden">
-        <div class="add-form-box">
-            <h3 style="color:#510000;">Add New Location</h3>
+    <div class="add-form-box">
+        <h3 style="color:#510000;">Add New Location</h3>
 
-            <label>Category:</label>
-            <select id="form-category">
-                <option value="coffee">Coffee</option>
-                <option value="study">Study</option>
-                <option value="microwaves">Microwaves</option>
-                <option value="vending">Vending</option>
-                <option value="bike">Bike Parking</option>
-                <option value="bathrooms">Bathrooms</option>
-                <option value="busstops">Bus Stops</option>
-            </select>
+        <label>Category:</label>
+        <select id="form-category">
+            <option value="coffee">Coffee</option>
+            <option value="study">Study</option>
+            <option value="microwaves">Microwaves</option>
+            <option value="vending">Vending</option>
+            <option value="bike">Bike Parking</option>
+            <option value="bathrooms">Bathrooms</option>
+            <option value="busstops">Bus Stops</option>
+            <option value="parkinggarages">Parking Garages</option>
+        </select>
 
-            <label>Building (Hall):</label>
-            <input type="text" id="form-hall" placeholder="e.g. Keller Hall">
+        <label id="label-hall">Building (Hall):</label>
+        <input type="text" id="form-hall" placeholder="e.g. Keller Hall">
 
-            <label>Floor:</label>
-            <input type="text" id="form-floor" placeholder="e.g. 3">
+        <label id="label-floor">Floor:</label>
+        <input type="text" id="form-floor" placeholder="e.g. 3">
 
-            <label>Note:</label>
-            <input type="text" id="form-note" placeholder="e.g. Near elevators">
+        <label id="label-note">Note:</label>
+        <input type="text" id="form-note" placeholder="e.g. Near elevators">
 
-            
-
-            <div class="form-buttons">
-                <button id="save-location" class="toggle-btn">Save</button>
-                <button id="cancel-location" class="toggle-btn">Cancel</button>
-            </div>
+        <div class="form-buttons">
+            <button id="save-location" class="toggle-btn">Save</button>
+            <button id="cancel-location" class="toggle-btn">Cancel</button>
         </div>
-   </div>
-
+    </div>
+</div>
+    <div id="submission-message" style="display:none; padding:10px; margin:10px; background:#e6ffe6; border:1px solid #66bb66; color:#225522; border-radius:4px;">
+    Thank you! Your location has been submitted for approval and will appear on the map once it’s approved.
+    </div>
     <div id="map"></div>
     <div id="sidebar"></div>
 
