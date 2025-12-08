@@ -2213,6 +2213,366 @@ var bathrooms = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Elmer L. Andersen Library",
+        "floor": "Ground",
+        "note": "Room 5"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24335851554102,
+          44.97336039081861
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": " Walter F Mondale Hall",
+        "floor": "4th",
+        "note": "Room 462"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2448329834747,
+          44.97333871210566
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": " Walter F Mondale Hall",
+        "floor": "4th",
+        "note": "Room 461"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24486117694494,
+          44.973323199272414
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": " Walter F Mondale Hall",
+        "floor": "3rd",
+        "note": "Room 361"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24487162913452,
+          44.973318516942925
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": " Walter F Mondale Hall",
+        "floor": "3rd",
+        "note": "Room 361"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24487162913452,
+          44.973318516942925
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": " Walter F Mondale Hall",
+        "floor": "3rd",
+        "note": "Room 362"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24482385286281,
+          44.97333753804591
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Heller Hall",
+        "floor": "7th",
+        "note": "Room 755"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24369165864265,
+          44.97166629943868
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Heller Hall",
+        "floor": "1st",
+        "note": "Room 155"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2437186037101,
+          44.97166729630848
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Heller Hall",
+        "floor": "11th",
+        "note": "Room 1119"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24374158751205,
+          44.97166843736355
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Social Sciences Building",
+        "floor": "1st",
+        "note": "Room 117"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24295276730524,
+          44.971540919030105
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Social Sciences Building",
+        "floor": "1st",
+        "note": "Room 129"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24290813188361,
+          44.971541550583964
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Social Sciences Building",
+        "floor": "1st",
+        "note": "Room 136"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24290188292491,
+          44.97149292093309
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "O. Meredith Wilson Library",
+        "floor": "Basement",
+        "note": "Room 21"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24359228754487,
+          44.97097371081904
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Rarig Center",
+        "floor": "Basement",
+        "note": "Room 71"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24234399224868,
+          44.97063005258545
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Ferguson Hall",
+        "floor": "Basement",
+        "note": "Room 92"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24160131746132,
+          44.97032537577786
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Ferguson Hall",
+        "floor": "Basement",
+        "note": "Room 93"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24159270427988,
+          44.97027967381342
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Herbert M Hanson Jr Hall",
+        "floor": "2nd",
+        "note": "Room 246"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24478326777968,
+          44.96937810476382
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Regis Center for Art-West",
+        "floor": "2nd",
+        "note": "Room W213"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24279671522574,
+          44.969296400546796
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "Barbara B Barker Center for Dance",
+        "floor": "2nd",
+        "note": "Room 212"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24281770670488,
+          44.96875410494502
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gender-Neutral Bathroom",
+        "hall": "West Bank Office Building",
+        "floor": "1st",
+        "note": "Room 113"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24838061904556,
+          44.975658868431054
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
         
   ]
 
