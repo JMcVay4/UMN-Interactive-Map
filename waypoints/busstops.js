@@ -527,5 +527,107 @@ var busstops = {
       },
       "id": 0
     },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus Stop",
+        "stop": "Blegen Hall",
+        "route": "121, 123"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.243660401678,
+          44.972282349953076
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus Stop",
+        "stop": "Willey Hall",
+        "route": "122"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24364920069308,
+          44.972554234138045
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus Stop",
+        "stop": "Mondale",
+        "route": "122, 125"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24576120084643,
+          44.97401459017573
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus Stop",
+        "stop": "Carlson School of Management",
+        "route": "122"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24559532868382,
+          44.97064673626264
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus Stop",
+        "stop": "Mondale",
+        "route": "123, 125"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.24593514363411,
+          44.97324911461513
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bus Stop",
+        "stop": "Carlson School of Management",
+        "route": "123, 125"
+      },
+      "geometry": {
+        "coordinates": [
+          -93.2448371332145,
+          44.97005630171222
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
   ]
 }
