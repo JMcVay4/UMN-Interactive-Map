@@ -915,19 +915,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     saveBtn.addEventListener("click", function () {
-        if (!clickedCoords || !formCategory) return;
-        const category = formCategory.value;
-        const field1 = inputHall ? (inputHall.value || "") : "";
-        const field2 = inputFloor ? (inputFloor.value || "") : "";
-        const note = inputNote ? (inputNote.value || "") : "";
-        const iconOrColor = markerColors[category] || "#808080";
-        const cfg = formConfigs[category] || formConfigs.study;
+        if (!clickedCoords || !formCategory) {
+            return;
+        }
 
-        let properties = {};
+        var category = formCategory.value;
+        var field1 = inputHall ? inputHall.value || "" : "";
+        var field2 = inputFloor ? inputFloor.value || "" : "";
+        var note = inputNote ? inputNote.value || "" : "";
+        var iconOrColor = markerColors[category] || "#808080";
+        var cfg = formConfigs[category] || formConfigs.study;
+
+        var properties = {};
+
         if (category === "parkinggarages") {
             properties.name = field1 || cfg.defaultName || "Parking Garage";
-        } 
-        else {
+        } else {
             properties.name = cfg.defaultName || "Location";
             if (category === "study") {
                 properties.hall = field1 || "Unknown";
@@ -939,27 +942,62 @@ document.addEventListener('DOMContentLoaded', function () {
                 properties.hall = field1 || "Unknown";
                 properties.floor = field2 || "N/A";
             }
-
             if (note) {
                 properties.note = note;
             }
         }
-            const feature = {
-                type: "Feature",
-                properties: properties,
-                geometry: {
-                    type: "Point",
-                    coordinates: [clickedCoords.lng, clickedCoords.lat]
-                }
-            };
 
-        const marker = createCustomMarker(feature, clickedCoords, iconOrColor);
+        var feature = {
+            type: "Feature",
+            properties: properties,
+            geometry: {
+                type: "Point",
+                coordinates: [clickedCoords.lng, clickedCoords.lat]
+            }
+        };
+
+        var marker = createCustomMarker(feature, clickedCoords, iconOrColor);
         onEachFeature(feature, marker);
         if (layerGroups[category]) {
             marker.addTo(layerGroups[category]);
         } else {
             marker.addTo(map);
         }
+
+        var msg = document.getElementById("submission-message");
+        if (msg) {
+            msg.style.display = "block";
+            setTimeout(function () {
+                msg.style.display = "none";
+            }, 5000);
+        }
+
+        var body = {
+            category: category,
+            name: properties.name,
+            hall: properties.hall || "",
+            floor: properties.floor || "",
+            note: properties.note || "",
+            lon: clickedCoords.lng,
+            lat: clickedCoords.lat
+        };
+
+        fetch("http://localhost:8080/api/submissions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(function (res) {
+            if (!res.ok) {
+                console.log("backend error status", res.status);
+            }
+        })
+        .catch(function (err) {
+            console.log("fetch failed", err);
+        });
+
         addForm.classList.add("hidden");
         addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
         addBtn.classList.remove("adding");
