@@ -1,1 +1,18 @@
 .DS_Store
+
+# Environment files / secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Firebase / service account keys
+*serviceAccount*.json
+*service-account*.json
+firebase-adminsdk*.json
+
+# Go build output
+*.exe
+*.out
