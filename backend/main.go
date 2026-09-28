@@ -23,7 +23,8 @@ func main() {
 	ctx := context.Background()
 	authClient, err := newFirebaseAuthClient(ctx)
 	if err != nil {
-		log.Fatal("firebase auth setup error:", err)
+		log.Println("warning: firebase auth not configured, /api/admin/* will return 503:", err)
+		authClient = nil
 	}
 
 	mux := http.NewServeMux()

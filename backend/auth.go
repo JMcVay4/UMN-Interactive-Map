@@ -12,11 +12,6 @@ import (
 	"google.golang.org/api/option"
 )
 
-// newFirebaseAuthClient initializes the Firebase Admin SDK. Credentials come
-// from FIREBASE_SERVICE_ACCOUNT_JSON (the service account key content) if
-// set, otherwise from the default credential chain (e.g.
-// GOOGLE_APPLICATION_CREDENTIALS pointing at a key file). The Admin SDK only
-// runs here, server-side — it never ships to the browser.
 func newFirebaseAuthClient(ctx context.Context) (*auth.Client, error) {
 	var opts []option.ClientOption
 	if key := os.Getenv("FIREBASE_SERVICE_ACCOUNT_JSON"); key != "" {
@@ -36,13 +31,15 @@ type contextKey string
 
 const adminUIDKey contextKey = "adminUID"
 
-// requireAdmin wraps a handler so it only runs for requests carrying a valid
-// Firebase ID token whose custom claims include admin=true. The claim is
-// granted out-of-band (Firebase console or a one-off Admin SDK script), never
-// through an app-facing endpoint. The verified caller's UID is stashed in the
-// request context so handlers can record who reviewed a submission.
+// requireAdmin passes requests through only if the bearer token is a valid
+// Firebase ID token with an admin=true custom claim.
 func requireAdmin(authClient *auth.Client, next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		if authClient == nil {
+			http.Error(w, "admin auth is not configured on this server", http.StatusServiceUnavailable)
+			return
+		}
+
 		header := r.Header.Get("Authorization")
 		idToken, ok := strings.CutPrefix(header, "Bearer ")
 		if !ok || idToken == "" {

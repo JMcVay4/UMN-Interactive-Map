@@ -111,70 +111,40 @@ function createCustomMarker(feature, latlng, iconOrColor) {
     return L.marker(latlng, { icon: icon });
 }
 
-function getWaypoint(filename, layerName, color) {
-    fetch("http://23.152.226.72:8080/waypoint/" + filename)
-        .then(parseWaypoint.bind(null, layerName, color));
+// Loads one category's approved locations from the backend and renders them
+// as a layer group, mirroring the way the old static waypoints/*.js files
+// were rendered. Returns a Promise so callers can wait for every category to
+// finish loading (e.g. before building the search index).
+function loadCategory(category) {
+    var url = API_BASE + "/api/locations?category=" + encodeURIComponent(category);
+    return fetch(url)
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("HTTP " + response.status);
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            layerGroups[category] = L.geoJSON(data, {
+                pointToLayer: function (feature, latlng) {
+                    return createCustomMarker(feature, latlng, markerColors[category]);
+                },
+                onEachFeature: onEachFeature
+            }).addTo(map);
+        })
+        .catch(function (err) {
+            console.error("Failed to load '" + category + "' locations from " + url + ":", err);
+        });
 }
 
-function parseWaypoint(response, layerName, color) {
-    if (response.status !== 200) {
-        return;
-    }
-
-    response.json()
-        .then(addWaypoints.bind(null, layerName, color));
-}
-
-function addWaypoints(data, layerName, color) {
-    layers[layerName] = L.geoJSON(data, {
-        pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, color),
-        onEachFeature: onEachFeature,
-    }).addTo(map);
-}
-
-// when adding a new set of objects, copy the following line and change test to your variable
-
-// getWaypoint("coffee.json", "coffee", markerColors.coffee);
-
-layerGroups.coffee = L.geoJSON(coffee, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.coffee),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.vending = L.geoJSON(vending, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.vending),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.study = L.geoJSON(study, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.study),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.microwaves = L.geoJSON(microwaves1, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.microwaves),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.parkinggarages = L.geoJSON(parkinggarages, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.parkinggarages),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.bike = L.geoJSON(bike, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bike),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.bathrooms = L.geoJSON(bathrooms, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.bathrooms),
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-layerGroups.busstops = L.geoJSON(busstops, {
-    pointToLayer: (feature, latlng) => createCustomMarker(feature, latlng, markerColors.busstops),
-    onEachFeature: onEachFeature
-}).addTo(map);
+// Kick off a fetch per category (PostgreSQL, via the backend, is now the
+// source of truth for map data). Once every category has resolved (or
+// failed — loadCategory always resolves, logging failures rather than
+// throwing), build the search index over whatever loaded successfully.
+var categoryLoadPromises = Object.keys(markerColors).map(loadCategory);
+Promise.all(categoryLoadPromises).then(function () {
+    collectAllMarkers();
+});
 
 // Function to toggle layer visibility
 function toggleLayer(category, isVisible) {
@@ -728,8 +698,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize marker collection
-    collectAllMarkers();
+    // Marker collection for search is initialized once all categories have
+    // finished loading from the API (see loadCategory/Promise.all above).
 
     // Bind search input events
     var searchInput = document.getElementById('searchInput');
@@ -974,15 +944,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var body = {
             category: category,
-            name: properties.name,
-            hall: properties.hall || "",
-            floor: properties.floor || "",
-            note: properties.note || "",
-            lon: clickedCoords.lng,
-            lat: clickedCoords.lat
+            lat: clickedCoords.lat,
+            lng: clickedCoords.lng,
+            properties: properties
         };
 
-        fetch("http://localhost:8080/api/submissions", {
+        var submitUrl = API_BASE + "/api/submissions";
+        fetch(submitUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -991,11 +959,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (res) {
             if (!res.ok) {
-                console.log("backend error status", res.status);
+                console.error("Failed to submit location to " + submitUrl + ": HTTP " + res.status);
             }
         })
         .catch(function (err) {
-            console.log("fetch failed", err);
+            console.error("Failed to submit location to " + submitUrl + ":", err);
         });
 
         addForm.classList.add("hidden");

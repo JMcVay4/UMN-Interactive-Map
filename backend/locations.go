@@ -28,9 +28,6 @@ type geoJSONFeatureCollection struct {
 	Features []geoJSONFeature `json:"features"`
 }
 
-// getLocationsHandler serves GET /api/locations — the public, unauthenticated
-// endpoint the map page uses as its data source. Only approved rows are ever
-// returned here.
 func getLocationsHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, category, lat, lng, properties FROM locations WHERE status = 'approved'`
@@ -81,9 +78,6 @@ type submissionRequest struct {
 	Properties map[string]any `json:"properties"`
 }
 
-// createSubmissionHandler serves POST /api/submissions — public, unauthenticated.
-// Anyone can propose a new pin; it lands with status='pending' and is invisible
-// to GET /api/locations until an admin approves it.
 func createSubmissionHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req submissionRequest
@@ -141,9 +135,6 @@ type submissionRow struct {
 	CreatedAt   time.Time       `json:"createdAt"`
 }
 
-// listSubmissionsHandler serves GET /api/admin/submissions (auth required).
-// Defaults to status=pending, the queue a moderator works through; accepts
-// ?status=approved|rejected|pending to inspect other buckets.
 func listSubmissionsHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		status := r.URL.Query().Get("status")
@@ -197,9 +188,6 @@ func listSubmissionsHandler(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// reviewSubmissionHandler serves both approve and reject: it's a single-row
-// status flip on the same `locations` table, so an approved submission shows
-// up in GET /api/locations on its very next call with no copy step.
 func reviewSubmissionHandler(db *sql.DB, newStatus string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		id, err := strconv.ParseInt(r.PathValue("id"), 10, 64)
