@@ -96,19 +96,5 @@ var coffee = {
       },
       "id": 5
     },     
-      {
-    "type": "Feature",
-    "properties": {
-      "name": "Coffee Shop",
-      "hall": "test",
-      "floor": "1",
-      "note": "test"
-    },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-93.2371492640783, 44.971427970764516]
-    },
-    "id": 6
-  }
   ]
 }
