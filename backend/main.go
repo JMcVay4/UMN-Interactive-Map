@@ -2,14 +2,21 @@ package main
 
 import (
 	"context"
+	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/joho/godotenv"
+
+	"umn-interactive-map-backend/internal/waypoints"
 )
 
 func main() {
+	importWaypoints := flag.Bool("import-waypoints", false, "import waypoints/*.js into Postgres and exit, instead of starting the server")
+	flag.Parse()
+
 	if err := godotenv.Load(); err != nil {
 		log.Println("no .env file found, relying on real environment variables")
 	}
@@ -19,6 +26,19 @@ func main() {
 		log.Fatal("database setup error:", err)
 	}
 	defer db.Close()
+
+	if *importWaypoints {
+		features, err := waypoints.LoadFeatures(waypoints.DefaultDir())
+		if err != nil {
+			log.Fatal("failed to load waypoint files:", err)
+		}
+		waypoints.PrintSummary(features)
+		if err := waypoints.Import(db, features); err != nil {
+			log.Fatal("import failed:", err)
+		}
+		fmt.Println("import complete")
+		return
+	}
 
 	ctx := context.Background()
 	authClient, err := newFirebaseAuthClient(ctx)
