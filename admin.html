@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin &mdash; UMN Interactive Map</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .admin-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      padding: 32px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+    }
+    .admin-card h1 {
+      color: #7A0019;
+      font-size: 1.25rem;
+      margin-top: 0;
+    }
+    button {
+      background: #7A0019;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #5c0013;
+    }
+    #admin-user-info {
+      margin: 16px 0;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    #admin-status {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #333;
+    }
+    #admin-status.error {
+      color: #b00020;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-card">
+    <h1>UMN Interactive Map &mdash; Admin</h1>
+
+    <button id="admin-sign-in">Sign in with Google</button>
+
+    <div id="admin-user-info" hidden></div>
+    <button id="admin-sign-out" hidden>Sign out</button>
+
+    <div id="admin-status"></div>
+  </div>
+
+  <script type="module" src="firebase-auth.js"></script>
+</body>
+</html>
