@@ -1,11 +1,10 @@
 // API base URL for the Go backend. This is a plain URL, not a secret — safe
-// to ship in client-side JS. Change this one line to switch environments;
-// no build step is involved in this project.
-//
-// Local development (default): the Go server running on your machine
-// (`go run .` from backend/, listening on :8080 by default).
-//
-// Production: once the backend is deployed to Render, replace this with its
-// real URL, e.g.
-//   const API_BASE = "https://umn-interactive-map-backend.onrender.com";
-const API_BASE = "http://localhost:8080";
+// to ship in client-side JS. No build step is involved in this project, so
+// environment switching is done by hostname instead of an env var:
+// localhost/127.0.0.1 (local dev) hits the Go server on :8080; anything else
+// (e.g. umn-campus-map.web.app) hits the deployed Render backend.
+const API_BASE =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:8080"
+    : "https://umn-campus-map-api.onrender.com";
