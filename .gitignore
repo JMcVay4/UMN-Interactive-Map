@@ -16,3 +16,4 @@ firebase-adminsdk*.json
 # Go build output
 *.exe
 *.out
+.firebase/
