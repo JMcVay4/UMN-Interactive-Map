@@ -58,27 +58,40 @@ func grantAdmin(ctx context.Context, authClient *auth.Client, rawEmail string) e
 type contextKey string
 
 const adminUIDKey contextKey = "adminUID"
+const submitterUIDKey contextKey = "submitterUID"
+
+// verifyRequestToken extracts and verifies the bearer token from the
+// request. On failure it writes the appropriate error response itself and
+// returns ok=false; callers should just return in that case.
+func verifyRequestToken(authClient *auth.Client, w http.ResponseWriter, r *http.Request) (*auth.Token, bool) {
+	if authClient == nil {
+		http.Error(w, "authentication is not configured on this server", http.StatusServiceUnavailable)
+		return nil, false
+	}
+
+	header := r.Header.Get("Authorization")
+	idToken, ok := strings.CutPrefix(header, "Bearer ")
+	if !ok || idToken == "" {
+		http.Error(w, "missing bearer token", http.StatusUnauthorized)
+		return nil, false
+	}
+
+	token, err := authClient.VerifyIDToken(r.Context(), idToken)
+	if err != nil {
+		log.Println("token verification failed:", err)
+		http.Error(w, "invalid or expired token", http.StatusUnauthorized)
+		return nil, false
+	}
+
+	return token, true
+}
 
 // requireAdmin passes requests through only if the bearer token is a valid
 // Firebase ID token with an admin=true custom claim.
 func requireAdmin(authClient *auth.Client, next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		if authClient == nil {
-			http.Error(w, "admin auth is not configured on this server", http.StatusServiceUnavailable)
-			return
-		}
-
-		header := r.Header.Get("Authorization")
-		idToken, ok := strings.CutPrefix(header, "Bearer ")
-		if !ok || idToken == "" {
-			http.Error(w, "missing bearer token", http.StatusUnauthorized)
-			return
-		}
-
-		token, err := authClient.VerifyIDToken(r.Context(), idToken)
-		if err != nil {
-			log.Println("token verification failed:", err)
-			http.Error(w, "invalid or expired token", http.StatusUnauthorized)
+		token, ok := verifyRequestToken(authClient, w, r)
+		if !ok {
 			return
 		}
 
@@ -89,6 +102,27 @@ func requireAdmin(authClient *auth.Client, next http.HandlerFunc) http.HandlerFu
 		}
 
 		ctx := context.WithValue(r.Context(), adminUIDKey, token.UID)
+		next(w, r.WithContext(ctx))
+	}
+}
+
+// requireUMNUser passes requests through only if the bearer token is a
+// valid Firebase ID token for an @umn.edu account. It does NOT require the
+// admin claim — this gates regular location submissions, not moderation.
+func requireUMNUser(authClient *auth.Client, next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		token, ok := verifyRequestToken(authClient, w, r)
+		if !ok {
+			return
+		}
+
+		email, _ := token.Claims["email"].(string)
+		if !strings.HasSuffix(strings.ToLower(email), "@umn.edu") {
+			http.Error(w, "a UMN (@umn.edu) account is required", http.StatusForbidden)
+			return
+		}
+
+		ctx := context.WithValue(r.Context(), submitterUIDKey, token.UID)
 		next(w, r.WithContext(ctx))
 	}
 }

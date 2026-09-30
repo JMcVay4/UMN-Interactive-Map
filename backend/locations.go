@@ -104,11 +104,13 @@ func createSubmissionHandler(db *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		submitterUID, _ := r.Context().Value(submitterUIDKey).(string)
+
 		var id int64
 		err = db.QueryRow(
-			`INSERT INTO locations (category, lat, lng, properties, status)
-			 VALUES ($1, $2, $3, $4, 'pending') RETURNING id`,
-			req.Category, req.Lat, req.Lng, string(propsJSON),
+			`INSERT INTO locations (category, lat, lng, properties, status, submitted_by)
+			 VALUES ($1, $2, $3, $4, 'pending', $5) RETURNING id`,
+			req.Category, req.Lat, req.Lng, string(propsJSON), submitterUID,
 		).Scan(&id)
 		if err != nil {
 			log.Println("insert error:", err)

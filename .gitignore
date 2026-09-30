@@ -17,3 +17,4 @@ firebase-adminsdk*.json
 *.exe
 *.out
 .firebase/
+firebase-debug.log*

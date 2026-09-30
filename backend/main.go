@@ -63,7 +63,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /api/locations", getLocationsHandler(db))
-	mux.HandleFunc("POST /api/submissions", createSubmissionHandler(db))
+	mux.HandleFunc("POST /api/submissions", requireUMNUser(authClient, createSubmissionHandler(db)))
 	mux.HandleFunc("GET /api/admin/submissions", requireAdmin(authClient, listSubmissionsHandler(db)))
 	mux.HandleFunc("POST /api/admin/submissions/{id}/approve", requireAdmin(authClient, reviewSubmissionHandler(db, "approved")))
 	mux.HandleFunc("POST /api/admin/submissions/{id}/reject", requireAdmin(authClient, reviewSubmissionHandler(db, "rejected")))

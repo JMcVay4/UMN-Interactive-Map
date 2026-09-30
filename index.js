@@ -113,8 +113,8 @@ function createCustomMarker(feature, latlng, iconOrColor) {
 
 // Loads one category's approved locations from the backend and renders them
 // as a layer group, mirroring the way the old static waypoints/*.js files
-// were rendered. Returns a Promise so callers can wait for every category to
-// finish loading (e.g. before building the search index).
+// were rendered. Resolves true/false (never rejects) so callers can tell
+// which categories failed without Promise.all short-circuiting.
 function loadCategory(category) {
     var url = API_BASE + "/api/locations?category=" + encodeURIComponent(category);
     return fetch(url)
@@ -125,26 +125,101 @@ function loadCategory(category) {
             return response.json();
         })
         .then(function (data) {
+            // Not added to the map here — categories start hidden until the
+            // user toggles them on (or a search reveals matching markers).
             layerGroups[category] = L.geoJSON(data, {
                 pointToLayer: function (feature, latlng) {
                     return createCustomMarker(feature, latlng, markerColors[category]);
                 },
                 onEachFeature: onEachFeature
-            }).addTo(map);
+            });
+            return true;
         })
         .catch(function (err) {
             console.error("Failed to load '" + category + "' locations from " + url + ":", err);
+            return false;
         });
 }
 
-// Kick off a fetch per category (PostgreSQL, via the backend, is now the
-// source of truth for map data). Once every category has resolved (or
-// failed — loadCategory always resolves, logging failures rather than
-// throwing), build the search index over whatever loaded successfully.
-var categoryLoadPromises = Object.keys(markerColors).map(loadCategory);
-Promise.all(categoryLoadPromises).then(function () {
-    collectAllMarkers();
-});
+var mapLoadingEl = document.getElementById('map-loading-message');
+var mapLoadErrorEl = document.getElementById('map-load-error');
+var mapLoadErrorTextEl = document.getElementById('map-load-error-text');
+var mapLoadRetryBtn = document.getElementById('map-load-retry');
+var categoriesPendingRetry = [];
+
+// Fetches the given categories (PostgreSQL, via the backend, is the source
+// of truth for map data), showing a loading state while in flight. On
+// success, builds the search index over whatever loaded and reveals the
+// "select a category" hint (via updateNoCategoryMessage). On failure, shows
+// an error with a Retry button that re-attempts only the categories that
+// didn't load — it does not block the map itself, which is already
+// rendered by this point.
+function attemptLoad(categories) {
+    if (mapLoadingEl) mapLoadingEl.style.display = 'block';
+    if (mapLoadErrorEl) mapLoadErrorEl.style.display = 'none';
+
+    Promise.all(categories.map(function (category) {
+        return loadCategory(category).then(function (ok) {
+            return { category: category, ok: ok };
+        });
+    })).then(function (outcomes) {
+        var failed = outcomes.filter(function (o) { return !o.ok; }).map(function (o) { return o.category; });
+        categoriesPendingRetry = failed;
+
+        if (mapLoadingEl) mapLoadingEl.style.display = 'none';
+
+        if (failed.length > 0) {
+            if (mapLoadErrorEl) mapLoadErrorEl.style.display = 'flex';
+            if (mapLoadErrorTextEl) {
+                mapLoadErrorTextEl.textContent = "Couldn't load " +
+                    (failed.length === categories.length ? "campus resources" : failed.length + " categor" + (failed.length === 1 ? "y" : "ies")) +
+                    ". The server may be starting up — please try again.";
+            }
+        } else if (mapLoadErrorEl) {
+            mapLoadErrorEl.style.display = 'none';
+        }
+
+        collectAllMarkers();
+        updateNoCategoryMessage();
+    });
+}
+
+if (mapLoadRetryBtn) {
+    mapLoadRetryBtn.addEventListener('click', function () {
+        attemptLoad(categoriesPendingRetry.length > 0 ? categoriesPendingRetry : Object.keys(markerColors));
+    });
+}
+
+attemptLoad(Object.keys(markerColors));
+
+// Shows/hides the "select a category or search" message based on whether
+// any category layer or search result is currently on the map.
+function updateNoCategoryMessage() {
+    var messageEl = document.getElementById('no-category-message');
+    if (!messageEl) return;
+
+    var noResultsElement = document.getElementById('searchNoResults');
+    if (noResultsElement && noResultsElement.style.display === 'block') {
+        messageEl.style.display = 'none';
+        return;
+    }
+    if (mapLoadingEl && mapLoadingEl.style.display === 'block') {
+        messageEl.style.display = 'none';
+        return;
+    }
+    if (mapLoadErrorEl && mapLoadErrorEl.style.display === 'flex') {
+        messageEl.style.display = 'none';
+        return;
+    }
+
+    var anyVisible = Object.keys(layerGroups).some(function (category) {
+        return map.hasLayer(layerGroups[category]);
+    }) || searchResultLayers.some(function (layer) {
+        return map.hasLayer(layer);
+    });
+
+    messageEl.style.display = anyVisible ? 'none' : 'block';
+}
 
 // Function to toggle layer visibility
 function toggleLayer(category, isVisible) {
@@ -155,6 +230,7 @@ function toggleLayer(category, isVisible) {
             map.removeLayer(layerGroups[category]);
         }
     }
+    updateNoCategoryMessage();
 }
 
 // Search functionality: store all markers for searching
@@ -243,17 +319,16 @@ function searchMarkers(query, mode) {
         if (Object.keys(originalButtonStates).length > 0) {
             savedStates = originalButtonStates;
         } else {
-            // If no saved states, restore to initial state (all active except filler)
-            Object.keys(layerGroups).forEach(function (category) {
-                savedStates[category] = true; // All layers active by default
-            });
-            // Also handle filler buttons and any other buttons
+            // No search happened yet this session, so there's nothing to
+            // restore from — just read whatever state the buttons are
+            // currently in (categories start off by default; this also
+            // respects any manual toggling the user already did).
             var toggleButtonsContainerRestore = document.querySelector('.toggle-buttons');
             if (toggleButtonsContainerRestore) {
                 toggleButtonsContainerRestore.querySelectorAll('.toggle-btn').forEach(function (button) {
                     var category = button.getAttribute('data-category');
-                    if (savedStates[category] === undefined) {
-                        savedStates[category] = (category !== 'filler'); // All active except filler
+                    if (category) {
+                        savedStates[category] = button.classList.contains('active');
                     }
                 });
             }
@@ -287,12 +362,8 @@ function searchMarkers(query, mode) {
                             btn.classList.remove('active');
                         }
                     } else {
-                        // If no saved state, restore to initial state (all active except filler)
-                        if (category !== 'filler') {
-                            btn.classList.add('active');
-                        } else {
-                            btn.classList.remove('active');
-                        }
+                        // No saved state at all for this button — default to off.
+                        btn.classList.remove('active');
                     }
                     if (btn.parentNode !== toggleButtonsContainer) {
                         toggleButtonsContainer.appendChild(btn);
@@ -314,12 +385,8 @@ function searchMarkers(query, mode) {
                                 button.classList.remove('active');
                             }
                         } else {
-                            // If no saved state, restore to initial state (all active except filler)
-                            if (category !== 'filler') {
-                                button.classList.add('active');
-                            } else {
-                                button.classList.remove('active');
-                            }
+                            // No saved state at all for this button — default to off.
+                            button.classList.remove('active');
                         }
                     }
                 });
@@ -620,6 +687,7 @@ function searchMarkers(query, mode) {
         }
     }
 
+    updateNoCategoryMessage();
     return results;
 }
 
@@ -639,23 +707,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Bind toggle button events
-    // Initialize: show all layers by default (all category buttons active)
-    if (toggleButtonsContainer) {
-        toggleButtonsContainer.querySelectorAll('.toggle-btn').forEach(function (button) {
-            var category = button.getAttribute('data-category');
-            // Only process buttons with category (not add-btn)
-            if (category) {
-                // Skip filler buttons - they don't have layers
-                if (category !== 'filler') {
-                    button.classList.add('active');
-                    toggleLayer(category, true);
-                } else {
-                    button.classList.remove('active');
-                }
-            }
-        });
-    }
+    // Categories start unselected/off (no 'active' class, no layer on the
+    // map) until the user toggles one on or searches.
 
     // Bind click events for category buttons only
     if (toggleButtonsContainer) {
@@ -859,10 +912,66 @@ document.addEventListener('DOMContentLoaded', function () {
     const addForm = document.getElementById("add-form");
     const saveBtn = document.getElementById("save-location");
     const cancelBtn = document.getElementById("cancel-location");
+    const addLocationAuthStatus = document.getElementById("add-location-auth-status");
+    const addFormUserInfo = document.getElementById("add-form-user-info");
 
     if (!addBtn || !addForm || !saveBtn || !cancelBtn) return;
 
-    addBtn.addEventListener("click", function () {
+    // Submitting a new location requires a signed-in UMN Google account
+    // (browsing/search/filters/popups never do — this gate only applies
+    // here). The backend independently re-verifies the token and the
+    // @umn.edu domain on every POST /api/submissions — this is UX only.
+    let currentFirebaseUser = null; // { email, displayName } or null
+    let wantsToAddAfterSignIn = false;
+
+    function setAddLocationAuthStatus(message) {
+        if (!addLocationAuthStatus) return;
+        addLocationAuthStatus.textContent = message || "";
+        addLocationAuthStatus.style.display = message ? "block" : "none";
+    }
+
+    function renderSignedInAs(user) {
+        if (addFormUserInfo) {
+            if (user) {
+                addFormUserInfo.style.display = "block";
+                addFormUserInfo.innerHTML = "Signed in as " + (user.displayName || user.email) +
+                    " (" + user.email + ") &middot; <a href=\"#\" id=\"add-form-sign-out\">Sign out</a>";
+                var signOutLink = document.getElementById("add-form-sign-out");
+                if (signOutLink) {
+                    signOutLink.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.firebaseSignOut().catch(function (err) {
+                            console.error("Sign-out failed:", err);
+                        });
+                    });
+                }
+            } else {
+                addFormUserInfo.style.display = "none";
+                addFormUserInfo.innerHTML = "";
+            }
+        }
+    }
+
+    document.addEventListener("firebase-auth-changed", function (e) {
+        var detail = e.detail || {};
+        if (detail.signedIn) {
+            currentFirebaseUser = { email: detail.email, displayName: detail.displayName };
+            setAddLocationAuthStatus("");
+            renderSignedInAs(currentFirebaseUser);
+            if (wantsToAddAfterSignIn) {
+                wantsToAddAfterSignIn = false;
+                beginAddingLocation();
+            }
+        } else {
+            currentFirebaseUser = null;
+            renderSignedInAs(null);
+            if (detail.error) {
+                setAddLocationAuthStatus(detail.error);
+            }
+        }
+    });
+
+    function beginAddingLocation() {
         adding = !adding;
         if (adding) {
             addBtn.innerHTML = "Click map to choose location";
@@ -874,6 +983,20 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("map").classList.remove("map-adding");
             addForm.classList.add("hidden");
         }
+    }
+
+    addBtn.addEventListener("click", function () {
+        if (!currentFirebaseUser) {
+            wantsToAddAfterSignIn = true;
+            setAddLocationAuthStatus("Sign in with your UMN Google account to add a location…");
+            window.firebaseSignIn().catch(function (err) {
+                wantsToAddAfterSignIn = false;
+                console.error("Sign-in failed:", err);
+                setAddLocationAuthStatus("Sign-in failed: " + err.message);
+            });
+            return;
+        }
+        beginAddingLocation();
     });
 
     map.on("click", function (e) {
@@ -917,65 +1040,98 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        var feature = {
-            type: "Feature",
-            properties: properties,
-            geometry: {
-                type: "Point",
-                coordinates: [clickedCoords.lng, clickedCoords.lat]
-            }
-        };
-
-        var marker = createCustomMarker(feature, clickedCoords, iconOrColor);
-        onEachFeature(feature, marker);
-        if (layerGroups[category]) {
-            marker.addTo(layerGroups[category]);
-        } else {
-            marker.addTo(map);
-        }
-
-        var msg = document.getElementById("submission-message");
-        if (msg) {
-            msg.style.display = "block";
-            setTimeout(function () {
-                msg.style.display = "none";
-            }, 5000);
-        }
+        // Capture the coordinates for this submission now — clickedCoords
+        // could change if the user clicks the map again while this request
+        // is still in flight (the form stays open on failure, so that's
+        // possible).
+        var submittedCoords = clickedCoords;
 
         var body = {
             category: category,
-            lat: clickedCoords.lat,
-            lng: clickedCoords.lng,
+            lat: submittedCoords.lat,
+            lng: submittedCoords.lng,
             properties: properties
         };
 
+        var submitErrorEl = document.getElementById("submit-error");
+        if (submitErrorEl) {
+            submitErrorEl.style.display = "none";
+            submitErrorEl.textContent = "";
+        }
+        saveBtn.disabled = true;
+        var originalSaveLabel = saveBtn.textContent;
+        saveBtn.textContent = "Saving...";
+
         var submitUrl = API_BASE + "/api/submissions";
-        fetch(submitUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
-        .then(function (res) {
-            if (!res.ok) {
-                console.error("Failed to submit location to " + submitUrl + ": HTTP " + res.status);
-            }
-        })
-        .catch(function (err) {
-            console.error("Failed to submit location to " + submitUrl + ":", err);
-        });
+        window.getFirebaseAuthHeader()
+            .then(function (authHeader) {
+                var headers = { "Content-Type": "application/json" };
+                for (var key in authHeader) headers[key] = authHeader[key];
+                return fetch(submitUrl, {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(body)
+                });
+            })
+            .then(function (res) {
+                if (!res.ok) {
+                    throw new Error("HTTP " + res.status);
+                }
+                return res.json();
+            })
+            .then(function () {
+                // Only now — a confirmed 2xx response — do we render the
+                // optimistic marker, show the thank-you banner, and close
+                // and reset the form.
+                var feature = {
+                    type: "Feature",
+                    properties: properties,
+                    geometry: {
+                        type: "Point",
+                        coordinates: [submittedCoords.lng, submittedCoords.lat]
+                    }
+                };
 
-        addForm.classList.add("hidden");
-        addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
-        addBtn.classList.remove("adding");
-        document.getElementById("map").classList.remove("map-adding");
-        adding = false;
-        clickedCoords = null;
+                var marker = createCustomMarker(feature, submittedCoords, iconOrColor);
+                onEachFeature(feature, marker);
+                if (layerGroups[category]) {
+                    marker.addTo(layerGroups[category]);
+                } else {
+                    marker.addTo(map);
+                }
 
-        if (inputHall) inputHall.value = "";
-        if (inputFloor) inputFloor.value = "";
-        if (inputNote) inputNote.value = "";
+                var msg = document.getElementById("submission-message");
+                if (msg) {
+                    msg.style.display = "block";
+                    setTimeout(function () {
+                        msg.style.display = "none";
+                    }, 5000);
+                }
+
+                addForm.classList.add("hidden");
+                addBtn.innerHTML = '<i class="fas fa-plus"></i> Add Location';
+                addBtn.classList.remove("adding");
+                document.getElementById("map").classList.remove("map-adding");
+                adding = false;
+                clickedCoords = null;
+
+                if (inputHall) inputHall.value = "";
+                if (inputFloor) inputFloor.value = "";
+                if (inputNote) inputNote.value = "";
+            })
+            .catch(function (err) {
+                console.error("Failed to submit location to " + submitUrl + ":", err);
+                // Form stays open, fields stay filled in, adding/clickedCoords
+                // are untouched — the user can just click Save again.
+                if (submitErrorEl) {
+                    submitErrorEl.textContent = "Couldn't submit this location (" + err.message + "). Please try again.";
+                    submitErrorEl.style.display = "block";
+                }
+            })
+            .finally(function () {
+                saveBtn.disabled = false;
+                saveBtn.textContent = originalSaveLabel;
+            });
     });
 
     cancelBtn.addEventListener("click", function () {

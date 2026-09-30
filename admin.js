@@ -1,6 +1,6 @@
 // Moderation UI for pending location submissions. Kept separate from
-// firebase-auth.js: this file only reacts to the "admin-auth-changed" event
-// it dispatches and calls window.getAdminAuthHeader() for a bearer token.
+// firebase-auth.js: this file only reacts to the "firebase-auth-changed" event
+// it dispatches and calls window.getFirebaseAuthHeader() for a bearer token.
 // Frontend admin=true gating here is UI convenience only — the backend
 // verifies the token and the admin claim on every request and is the real
 // authorization boundary.
@@ -114,7 +114,7 @@ function renderSubmissionCard(submission) {
     rejectBtn.disabled = true;
     errorEl.hidden = true;
 
-    window.getAdminAuthHeader()
+    window.getFirebaseAuthHeader()
       .then(function (authHeader) {
         return fetch(API_BASE + "/api/admin/submissions/" + submission.id + "/" + action, {
           method: "POST",
@@ -157,7 +157,7 @@ function renderSubmissionCard(submission) {
 function loadPendingSubmissions() {
   showLoading();
 
-  window.getAdminAuthHeader()
+  window.getFirebaseAuthHeader()
     .then(function (authHeader) {
       return fetch(API_BASE + "/api/admin/submissions?status=pending", { headers: authHeader });
     })
@@ -185,7 +185,7 @@ function loadPendingSubmissions() {
     });
 }
 
-document.addEventListener("admin-auth-changed", function (e) {
+document.addEventListener("firebase-auth-changed", function (e) {
   var detail = e.detail || {};
   if (detail.isAdmin) {
     setHidden(moderationSection, false);

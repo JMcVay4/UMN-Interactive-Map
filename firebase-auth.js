@@ -23,6 +23,8 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ hd: "umn.edu" });
 
+// admin.html-specific elements. Guarded everywhere below since they don't
+// exist on index.html — this file is shared by both pages.
 const signInBtn = document.getElementById("admin-sign-in");
 const signOutBtn = document.getElementById("admin-sign-out");
 const userInfo = document.getElementById("admin-user-info");
@@ -34,10 +36,20 @@ function setStatus(message, isError) {
   statusEl.classList.toggle("error", !!isError);
 }
 
+// Shared sign-in/out entry points so any page can trigger Google auth
+// without needing admin.html's specific button elements.
+window.firebaseSignIn = function () {
+  return signInWithPopup(auth, provider);
+};
+
+window.firebaseSignOut = function () {
+  return signOut(auth);
+};
+
 if (signInBtn) {
   signInBtn.addEventListener("click", function () {
     setStatus("");
-    signInWithPopup(auth, provider).catch(function (err) {
+    window.firebaseSignIn().catch(function (err) {
       console.error("Google sign-in failed:", err);
       setStatus("Sign-in failed: " + err.message, true);
     });
@@ -46,14 +58,16 @@ if (signInBtn) {
 
 if (signOutBtn) {
   signOutBtn.addEventListener("click", function () {
-    signOut(auth).catch(function (err) {
+    window.firebaseSignOut().catch(function (err) {
       console.error("Sign-out failed:", err);
     });
   });
 }
 
+// Broadcast on document so any page's own script can react without this
+// file needing to know about that page's specific UI.
 function broadcastAuthState(detail) {
-  document.dispatchEvent(new CustomEvent("admin-auth-changed", { detail: detail }));
+  document.dispatchEvent(new CustomEvent("firebase-auth-changed", { detail: detail }));
 }
 
 onAuthStateChanged(auth, function (user) {
@@ -61,18 +75,21 @@ onAuthStateChanged(auth, function (user) {
     if (signInBtn) signInBtn.hidden = false;
     if (signOutBtn) signOutBtn.hidden = true;
     if (userInfo) userInfo.hidden = true;
-    broadcastAuthState({ signedIn: false, isAdmin: false, email: null, displayName: null });
+    broadcastAuthState({ signedIn: false, isAdmin: false, email: null, displayName: null, error: null });
     return;
   }
 
   // setCustomParameters({hd: "umn.edu"}) only hints the Google account
   // picker — it is not enforced, so this check is required for UX. It is
   // NOT the security boundary: the backend still requires a valid Firebase
-  // ID token and the admin custom claim on every protected request.
+  // ID token (and, for admin routes, the admin custom claim) on every
+  // protected request.
   var email = user.email || "";
   if (!email.toLowerCase().endsWith("@umn.edu")) {
-    setStatus("A UMN Google account (@umn.edu) is required to sign in here.", true);
-    signOut(auth).catch(function (err) {
+    var domainError = "A UMN Google account (@umn.edu) is required.";
+    setStatus(domainError, true);
+    broadcastAuthState({ signedIn: false, isAdmin: false, email: null, displayName: null, error: domainError });
+    window.firebaseSignOut().catch(function (err) {
       console.error("Sign-out after domain check failed:", err);
     });
     return;
@@ -91,18 +108,20 @@ onAuthStateChanged(auth, function (user) {
       userInfo.textContent = (user.displayName || user.email) + " (" + user.email + ") — " +
         (isAdmin ? "admin access confirmed" : "signed in, but no admin access on this account");
     }
-    broadcastAuthState({ signedIn: true, isAdmin: isAdmin, email: user.email, displayName: user.displayName });
+    broadcastAuthState({ signedIn: true, isAdmin: isAdmin, email: user.email, displayName: user.displayName, error: null });
   }).catch(function (err) {
     console.error("Failed to read ID token claims:", err);
     setStatus("Signed in, but failed to verify admin access: " + err.message, true);
-    broadcastAuthState({ signedIn: true, isAdmin: false, email: user.email, displayName: user.displayName });
+    broadcastAuthState({ signedIn: true, isAdmin: false, email: user.email, displayName: user.displayName, error: null });
   });
 });
 
-// For future admin UI code: attaches a fresh Firebase ID token to protected
-// /api/admin/* requests. The backend verifies the token and the admin claim
-// on every call — this only supplies the header, it grants nothing itself.
-window.getAdminAuthHeader = function () {
+// Attaches a fresh Firebase ID token to a protected request, for any signed-
+// in user (not admin-specific — used both by admin moderation calls and by
+// regular users submitting a new location). The backend verifies the token
+// (and, for admin routes, the admin claim) on every call — this only
+// supplies the header, it grants nothing itself.
+window.getFirebaseAuthHeader = function () {
   var user = auth.currentUser;
   if (!user) {
     return Promise.reject(new Error("not signed in"));
