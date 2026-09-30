@@ -9,10 +9,12 @@
       font-family: system-ui, sans-serif;
       background: #f5f5f5;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
       margin: 0;
+      padding: 40px 16px;
+      box-sizing: border-box;
     }
     .admin-card {
       background: #fff;
@@ -40,6 +42,10 @@
     button:hover {
       background: #5c0013;
     }
+    button:disabled {
+      background: #aaa;
+      cursor: default;
+    }
     #admin-user-info {
       margin: 16px 0;
       font-size: 0.9rem;
@@ -52,6 +58,70 @@
     }
     #admin-status.error {
       color: #b00020;
+    }
+
+    #moderation-section {
+      max-width: 640px;
+      width: 100%;
+      margin-top: 24px;
+    }
+    #moderation-section h2 {
+      color: #7A0019;
+      font-size: 1.1rem;
+    }
+    #pending-loading, #pending-empty {
+      color: #555;
+      font-size: 0.9rem;
+    }
+    #pending-error {
+      color: #b00020;
+      font-size: 0.9rem;
+    }
+    .submission-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+    .submission-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: bold;
+      text-transform: capitalize;
+      color: #7A0019;
+      margin-bottom: 8px;
+    }
+    .submission-time {
+      font-weight: normal;
+      text-transform: none;
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .submission-fields {
+      font-size: 0.9rem;
+      color: #333;
+      text-align: left;
+    }
+    .submission-field {
+      margin-bottom: 4px;
+    }
+    .submission-error {
+      color: #b00020;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+    .submission-actions {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .reject-btn {
+      background: #555;
+    }
+    .reject-btn:hover {
+      background: #333;
     }
   </style>
 </head>
@@ -67,6 +137,16 @@
     <div id="admin-status"></div>
   </div>
 
+  <div id="moderation-section" hidden>
+    <h2>Pending Submissions</h2>
+    <div id="pending-loading" hidden>Loading pending submissions&hellip;</div>
+    <div id="pending-empty" hidden>No pending submissions.</div>
+    <div id="pending-error" hidden></div>
+    <div id="pending-list"></div>
+  </div>
+
+  <script src="config.js"></script>
   <script type="module" src="firebase-auth.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>

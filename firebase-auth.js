@@ -52,11 +52,16 @@ if (signOutBtn) {
   });
 }
 
+function broadcastAuthState(detail) {
+  document.dispatchEvent(new CustomEvent("admin-auth-changed", { detail: detail }));
+}
+
 onAuthStateChanged(auth, function (user) {
   if (!user) {
     if (signInBtn) signInBtn.hidden = false;
     if (signOutBtn) signOutBtn.hidden = true;
     if (userInfo) userInfo.hidden = true;
+    broadcastAuthState({ signedIn: false, isAdmin: false, email: null, displayName: null });
     return;
   }
 
@@ -86,9 +91,11 @@ onAuthStateChanged(auth, function (user) {
       userInfo.textContent = (user.displayName || user.email) + " (" + user.email + ") — " +
         (isAdmin ? "admin access confirmed" : "signed in, but no admin access on this account");
     }
+    broadcastAuthState({ signedIn: true, isAdmin: isAdmin, email: user.email, displayName: user.displayName });
   }).catch(function (err) {
     console.error("Failed to read ID token claims:", err);
     setStatus("Signed in, but failed to verify admin access: " + err.message, true);
+    broadcastAuthState({ signedIn: true, isAdmin: false, email: user.email, displayName: user.displayName });
   });
 });
 
