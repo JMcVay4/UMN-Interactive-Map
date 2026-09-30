@@ -14,11 +14,24 @@ import (
 )
 
 func main() {
+	grantAdminEmail := flag.String("grant-admin-email", "", "grant the admin custom claim to an existing Firebase user by email, then exit")
 	importWaypoints := flag.Bool("import-waypoints", false, "import waypoints/*.js into Postgres and exit, instead of starting the server")
 	flag.Parse()
 
 	if err := godotenv.Load(); err != nil {
 		log.Println("no .env file found, relying on real environment variables")
+	}
+
+	if *grantAdminEmail != "" {
+		ctx := context.Background()
+		authClient, err := newFirebaseAuthClient(ctx)
+		if err != nil {
+			log.Fatal("firebase auth setup error:", err)
+		}
+		if err := grantAdmin(ctx, authClient, *grantAdminEmail); err != nil {
+			log.Fatal(err)
+		}
+		return
 	}
 
 	db, err := openDB()

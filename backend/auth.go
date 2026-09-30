@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -25,6 +26,33 @@ func newFirebaseAuthClient(ctx context.Context) (*auth.Client, error) {
 	}
 
 	return app.Auth(ctx)
+}
+
+// grantAdmin sets the admin=true custom claim on an existing Firebase user
+// found by email, preserving any other custom claims already set.
+func grantAdmin(ctx context.Context, authClient *auth.Client, rawEmail string) error {
+	email := strings.TrimSpace(rawEmail)
+	if !strings.HasSuffix(strings.ToLower(email), "@umn.edu") {
+		return fmt.Errorf("refusing to grant admin: %q does not end in @umn.edu", email)
+	}
+
+	user, err := authClient.GetUserByEmail(ctx, email)
+	if err != nil {
+		return fmt.Errorf("no existing Firebase user with email %q: %w", email, err)
+	}
+
+	claims := map[string]interface{}{}
+	for k, v := range user.CustomClaims {
+		claims[k] = v
+	}
+	claims["admin"] = true
+
+	if err := authClient.SetCustomUserClaims(ctx, user.UID, claims); err != nil {
+		return fmt.Errorf("failed to set admin claim: %w", err)
+	}
+
+	fmt.Printf("granted admin=true to %s (uid: %s)\n", user.Email, user.UID)
+	return nil
 }
 
 type contextKey string
